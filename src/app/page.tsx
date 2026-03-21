@@ -1,6 +1,7 @@
 import Navbar from "@/components/navbar";
 import Hero from "@/components/hero";
 import Projects from "@/components/projects";
+import Stats from "@/components/stats";
 import Skills from "@/components/skills";
 import Experience from "@/components/experience";
 import AboutContact from "@/components/about-contact";
@@ -13,6 +14,7 @@ export default function Home(): React.ReactElement {
       <main id="main">
         <Hero />
         <Projects />
+        <Stats />
         <Skills />
         <Experience />
         <AboutContact />
