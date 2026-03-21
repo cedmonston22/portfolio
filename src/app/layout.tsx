@@ -13,7 +13,7 @@ const spaceMono = Space_Mono({
   weight: ["400", "700"],
 });
 
-const siteUrl = "https://coleedmonston.com";
+const siteUrl = "https://www.coleedmonston.me";
 
 export const metadata: Metadata = {
   title: "Cole Edmonston | Software Developer",
@@ -38,21 +38,12 @@ export const metadata: Metadata = {
     title: "Cole Edmonston | Software Developer",
     description:
       "Software developer at Cal Poly SLO building full-stack web and mobile apps. Creator of Mustang Market (700+ users), ENVISION Wardrobe, and more.",
-    images: [
-      {
-        url: "/og-image.svg",
-        width: 1200,
-        height: 630,
-        alt: "Cole Edmonston — Software Developer",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Cole Edmonston | Software Developer",
     description:
       "Software developer at Cal Poly SLO building full-stack web and mobile apps.",
-    images: ["/og-image.svg"],
   },
   robots: {
     index: true,
