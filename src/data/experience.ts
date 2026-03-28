@@ -20,7 +20,7 @@ export const education: Education[] = [
     degree: "B.S. Computer Science",
     location: "San Luis Obispo, CA",
     year: "2029",
-    highlights: ["4.0 GPA", "Dean's List (Fall 2025)"],
+    highlights: ["3.83 GPA", "Dean's List (Fall 2025)"],
   },
   {
     school: "Clayton Valley Charter High School",
