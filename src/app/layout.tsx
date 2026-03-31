@@ -13,10 +13,42 @@ const spaceMono = Space_Mono({
   weight: ["400", "700"],
 });
 
+const siteUrl = "https://www.coleedmonston.me";
+
 export const metadata: Metadata = {
-  title: "Cole Edmonston | Portfolio",
+  title: "Cole Edmonston | Software Developer",
   description:
-    "Personal portfolio showcasing projects and skills for software development roles.",
+    "Software developer at Cal Poly SLO building full-stack web and mobile apps. Creator of Mustang Market (700+ users), ENVISION Wardrobe, and more.",
+  metadataBase: new URL(siteUrl),
+  keywords: [
+    "Cole Edmonston",
+    "software developer",
+    "Cal Poly SLO",
+    "full-stack developer",
+    "React Native",
+    "Next.js",
+    "portfolio",
+  ],
+  authors: [{ name: "Cole Edmonston" }],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteUrl,
+    siteName: "Cole Edmonston",
+    title: "Cole Edmonston | Software Developer",
+    description:
+      "Software developer at Cal Poly SLO building full-stack web and mobile apps. Creator of Mustang Market (700+ users), ENVISION Wardrobe, and more.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cole Edmonston | Software Developer",
+    description:
+      "Software developer at Cal Poly SLO building full-stack web and mobile apps.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

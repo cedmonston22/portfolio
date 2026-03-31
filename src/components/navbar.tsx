@@ -6,7 +6,9 @@ import { motion, AnimatePresence } from "framer-motion";
 const navLinks = [
   { label: "Home", href: "#hero" },
   { label: "Projects", href: "#projects" },
-  { label: "About", href: "#contact" },
+  { label: "Skills", href: "#skills" },
+  { label: "Experience", href: "#experience" },
+  { label: "Contact", href: "#contact" },
   { label: "Resume", href: "/resume.pdf", isExternal: true },
 ];
 
@@ -37,7 +39,7 @@ export default function Navbar(): React.ReactElement {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 md:px-8">
         <a
           href="#hero"
-          className="gold-sheen text-lg font-bold tracking-tight"
+          className="text-lg font-bold tracking-tight text-gold"
         >
           CE.
         </a>

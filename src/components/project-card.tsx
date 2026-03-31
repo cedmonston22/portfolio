@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Project } from "@/data/projects";
 
@@ -23,21 +24,25 @@ export default function ProjectCard({
       }}
       className="group flex flex-col overflow-hidden rounded-xl border border-border-subtle bg-bg-elevated transition-all duration-300 hover:border-[rgba(212,168,67,0.2)] hover:bg-bg-surface hover:shadow-lg hover:shadow-black/30"
     >
-      {/* Project image */}
-      <div className="relative aspect-[4/3] overflow-hidden bg-bg-surface">
+      {/* Project image — links to case study */}
+      <Link href={`/projects/${project.slug}`} className="relative aspect-[4/3] overflow-hidden bg-bg-surface">
         <Image
           src={project.image}
           alt={`${project.title} screenshot`}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
+          placeholder="blur"
+          blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iIzE4MTgxZiIvPjwvc3ZnPg=="
           className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
         />
-      </div>
+      </Link>
 
       <div className="flex flex-1 flex-col px-5 pb-5 pt-4">
-        <h3 className="text-lg font-semibold text-text-primary transition-colors group-hover:text-gold">
-          {project.title}
-        </h3>
+        <Link href={`/projects/${project.slug}`}>
+          <h3 className="text-lg font-semibold text-text-primary transition-colors group-hover:text-gold">
+            {project.title}
+          </h3>
+        </Link>
 
         <p className="mt-2 flex-1 text-sm leading-relaxed text-text-secondary">
           {project.description}
@@ -119,6 +124,27 @@ export default function ProjectCard({
             )}
           </div>
         )}
+
+        {/* Case study link */}
+        <Link
+          href={`/projects/${project.slug}`}
+          className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-gold transition-colors hover:text-gold-light"
+        >
+          Read Case Study
+          <svg
+            className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+            />
+          </svg>
+        </Link>
       </div>
     </motion.div>
   );
