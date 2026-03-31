@@ -9,11 +9,11 @@ import {
   SiPython,
   SiSupabase,
   SiFirebase,
-  SiPostgresql,
+
   SiGit,
   SiExpo,
   SiVercel,
-  SiFigma,
+
   SiMeta,
 } from "react-icons/si";
 import { RiGeminiFill } from "react-icons/ri";
@@ -50,7 +50,6 @@ export const skillCategories: SkillCategory[] = [
       { name: "Python", icon: SiPython, color: "#3776AB" },
       { name: "Supabase", icon: SiSupabase, color: "#3FCF8E" },
       { name: "Firebase", icon: SiFirebase, color: "#DD2C00" },
-      { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
     ],
   },
   {
@@ -71,7 +70,6 @@ export const skillCategories: SkillCategory[] = [
       { name: "Expo", icon: SiExpo, color: "#FFFFFF" },
       { name: "Vercel", icon: SiVercel, color: "#FFFFFF" },
       { name: "VS Code", icon: VscCode, color: "#007ACC" },
-      { name: "Figma", icon: SiFigma, color: "#F24E1E" },
     ],
   },
 ];

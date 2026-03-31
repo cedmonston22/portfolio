@@ -13,8 +13,10 @@ export const projects: Project[] = [
     title: "Intake",
     description:
       "AI-powered nutrition and supplement scanner app that lets users scan any food or supplement label with their camera and instantly receive a personalized ingredient breakdown. Uses Gemini 2.5 Flash Vision for single-call label analysis, scoring products on Safety, Dosing, and Transparency at ~$0.002 per scan.",
-    techStack: ["React Native", "Expo", "Supabase", "Gemini AI", "PostgreSQL"],
+    techStack: ["React Native", "Expo", "Supabase", "Gemini AI"],
     image: "/projects/intake.png",
+    liveUrl: "https://intake-landing.vercel.app/",
+    appUrl: "https://testflight.apple.com/join/TvSsMYsf",
   },
   {
     title: "ENVISION Wardrobe",
