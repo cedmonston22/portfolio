@@ -22,7 +22,7 @@ export default function ProjectCard({
           transition: { duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] },
         },
       }}
-      className="group flex flex-col overflow-hidden rounded-xl border border-border-subtle bg-bg-elevated transition-all duration-300 hover:border-[rgba(212,168,67,0.2)] hover:bg-bg-surface hover:shadow-lg hover:shadow-black/30"
+      className="group flex flex-col overflow-hidden rounded-xl border border-border-subtle bg-bg-elevated card-hover"
     >
       {/* Project image — links to case study */}
       <Link href={`/projects/${project.slug}`} className="relative aspect-[4/3] overflow-hidden bg-bg-surface">
@@ -35,6 +35,8 @@ export default function ProjectCard({
           blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iIzE4MTgxZiIvPjwvc3ZnPg=="
           className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
         />
+        {/* Subtle bottom gradient for text readability */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-bg-elevated/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
       </Link>
 
       <div className="flex flex-1 flex-col px-5 pb-5 pt-4">
@@ -128,11 +130,11 @@ export default function ProjectCard({
         {/* Case study link */}
         <Link
           href={`/projects/${project.slug}`}
-          className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-gold transition-colors hover:text-gold-light"
+          className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-gold transition-all duration-200 hover:text-gold-light hover:gap-2.5"
         >
           Read Case Study
           <svg
-            className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
+            className="h-3.5 w-3.5"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

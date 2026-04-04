@@ -72,7 +72,10 @@ function StatItem({ stat }: { stat: Stat }): React.ReactElement {
   const count = useCountUp(stat.value, isVisible);
 
   return (
-    <div ref={ref} className="text-center">
+    <div
+      ref={ref}
+      className="rounded-xl border border-border-subtle bg-bg-elevated px-4 py-6 text-center transition-all duration-300 hover:border-gold/15 hover:bg-bg-surface"
+    >
       <span className="text-4xl font-bold text-gold md:text-5xl">
         {count}
         {stat.suffix}
@@ -84,7 +87,7 @@ function StatItem({ stat }: { stat: Stat }): React.ReactElement {
 
 export default function Stats(): React.ReactElement {
   return (
-    <section className="relative mx-auto max-w-5xl px-6 py-16 md:px-8 md:py-24">
+    <section className="relative mx-auto max-w-5xl px-6 py-20 md:px-8 md:py-32">
       {/* Section divider */}
       <div className="absolute top-0 left-1/2 h-[1px] w-3/4 -translate-x-1/2 bg-gradient-to-r from-transparent via-border-subtle to-transparent" />
 
@@ -93,7 +96,21 @@ export default function Stats(): React.ReactElement {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.6 }}
-        className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-12"
+      >
+        <p className="font-mono text-xs tracking-[0.2em] text-gold uppercase">
+          Impact
+        </p>
+        <h2 className="mt-2 text-3xl font-bold text-text-primary md:text-4xl">
+          By the Numbers
+        </h2>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.6, delay: 0.15 }}
+        className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6"
       >
         {stats.map((stat) => (
           <StatItem key={stat.label} stat={stat} />

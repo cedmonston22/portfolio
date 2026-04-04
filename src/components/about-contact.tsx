@@ -126,7 +126,7 @@ export default function AboutContact(): React.ReactElement {
                       ? undefined
                       : "noopener noreferrer"
                   }
-                  className="group flex items-center gap-4 rounded-xl border border-border-subtle bg-bg-elevated p-4 transition-all hover:border-[rgba(212,168,67,0.2)] hover:bg-bg-surface"
+                  className="group flex items-center gap-4 rounded-xl border border-border-subtle bg-bg-elevated p-4 card-hover"
                 >
                   <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[rgba(212,168,67,0.1)] text-gold transition-colors group-hover:bg-[rgba(212,168,67,0.15)]">
                     {link.icon}

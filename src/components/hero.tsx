@@ -84,7 +84,7 @@ function Typewriter(): React.ReactElement {
   return (
     <span className="text-gold">
       {displayed}
-      <span className="ml-[1px] inline-block w-[2px] animate-pulse bg-gold">
+      <span className="ml-[1px] inline-block w-[2px] animate-cursor-blink bg-gold">
         &nbsp;
       </span>
     </span>
@@ -114,7 +114,7 @@ export default function Hero(): React.ReactElement {
           }}
           className="mx-auto mb-8 h-40 w-40 md:h-48 md:w-48"
         >
-          <div className="relative h-full w-full rounded-full border border-gold/30 p-1.5 shadow-lg shadow-gold/10">
+          <div className="relative h-full w-full rounded-full border border-gold/20 p-1.5 shadow-lg shadow-gold/10 ring-1 ring-gold/10 ring-offset-2 ring-offset-bg-primary">
             <Image
               src="/headshot.jpg"
               alt="Headshot of Cole Edmonston"
@@ -174,11 +174,11 @@ export default function Hero(): React.ReactElement {
         >
           <a
             href="#projects"
-            className="group inline-flex items-center gap-2.5 rounded-lg bg-gold px-9 py-3.5 text-base font-semibold text-bg-primary transition-all hover:brightness-110 hover:shadow-lg hover:shadow-gold/20"
+            className="group inline-flex items-center gap-2.5 rounded-lg bg-gold px-9 py-3.5 text-base font-semibold text-bg-primary shadow-md shadow-gold/10 transition-all duration-200 hover:bg-gold-light hover:shadow-lg hover:shadow-gold/20"
           >
             View My Work
             <svg
-              className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+              className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -195,13 +195,26 @@ export default function Hero(): React.ReactElement {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg border border-border-subtle px-7 py-3.5 text-sm font-medium text-text-secondary transition-all hover:border-border-hover hover:text-text-primary hover:bg-bg-hover"
+            className="inline-flex items-center gap-2 rounded-lg border border-border-hover px-7 py-3.5 text-sm font-medium text-text-secondary transition-all duration-200 hover:border-gold/30 hover:text-gold hover:bg-bg-hover"
           >
+            <svg
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={1.5}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m.75 12l3 3m0 0l3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
+              />
+            </svg>
             Resume
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 rounded-lg border border-border-subtle px-7 py-3.5 text-sm font-medium text-text-secondary transition-all hover:border-border-hover hover:text-text-primary hover:bg-bg-hover"
+            className="inline-flex items-center gap-2 rounded-lg border border-border-hover px-7 py-3.5 text-sm font-medium text-text-secondary transition-all duration-200 hover:border-gold/30 hover:text-gold hover:bg-bg-hover"
           >
             Get in Touch
           </a>

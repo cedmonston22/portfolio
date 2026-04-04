@@ -71,7 +71,7 @@ export default function Experience(): React.ReactElement {
                     },
                   },
                 }}
-                className="rounded-xl border border-border-subtle bg-bg-elevated p-5 transition-all hover:border-[rgba(212,168,67,0.2)] hover:bg-bg-surface"
+                className="rounded-xl border border-border-subtle bg-bg-elevated p-5 card-hover"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div>
@@ -151,7 +151,7 @@ export default function Experience(): React.ReactElement {
                     },
                   },
                 }}
-                className="rounded-xl border border-border-subtle bg-bg-elevated p-5 transition-all hover:border-[rgba(212,168,67,0.2)] hover:bg-bg-surface"
+                className="rounded-xl border border-border-subtle bg-bg-elevated p-5 card-hover"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div>

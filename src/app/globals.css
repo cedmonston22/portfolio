@@ -57,6 +57,16 @@ body {
 }
 
 
+/* Cursor blink — precise timing for typewriter */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-cursor-blink {
+  animation: cursor-blink 0.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
 /* Pulse glow */
 @keyframes pulse-glow {
   0%, 100% { opacity: 0.4; }
@@ -67,6 +77,23 @@ body {
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
+}
+
+/* Subtle gold glow for hover states */
+.glow-gold {
+  box-shadow: 0 0 20px rgba(212, 168, 67, 0.08), 0 0 40px rgba(212, 168, 67, 0.04);
+}
+
+/* Card lift — reusable hover elevation */
+.card-hover {
+  transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card-hover:hover {
+  border-color: rgba(212, 168, 67, 0.15);
+  background-color: var(--color-bg-surface);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(212, 168, 67, 0.06);
+  transform: translateY(-2px);
 }
 
 /* Custom scrollbar */
