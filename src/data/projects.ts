@@ -46,7 +46,7 @@ export const projects: Project[] = [
         "Designed for scale with Supabase edge functions",
       ],
       role: "Solo developer — design, architecture, AI integration, and mobile development",
-      timeline: "2025 — In Development",
+      timeline: "March 2026 — April 2026",
     },
   },
   {
@@ -75,7 +75,7 @@ export const projects: Project[] = [
         "Preparing for App Store launch",
       ],
       role: "Solo developer — end-to-end product design, development, and deployment",
-      timeline: "2025 — Beta on TestFlight",
+      timeline: "November 2025 — Jan 2026",
     },
   },
   {
@@ -105,14 +105,44 @@ export const projects: Project[] = [
         "Open source on GitHub",
       ],
       role: "Solo developer — architecture, real-time sync, editor customization, and UI design",
-      timeline: "2025 — Complete",
+      timeline: "Feb 2026 — Complete",
+    },
+  },
+  {
+    slug: "linkedin-games-solver",
+    title: "LinkedIn Games Solver",
+    description:
+      "Chrome extension (Manifest V3) that automatically solves LinkedIn's daily puzzle games — Queens, Zip, Tango, and Patches. Parses each board directly from the DOM, runs a pure TypeScript backtracking solver, and injects the solution via the Chrome Debugger API to dispatch trusted mouse events that bypass LinkedIn's isTrusted checks.",
+    techStack: ["TypeScript", "Chrome Extension", "Vitest", "Manifest V3"],
+    image: "/projects/linkedin-games-solver-v2.png",
+    githubUrl: "https://github.com/cedmonston22/Linkedin-Games-Solver",
+    caseStudy: {
+      problem:
+        "LinkedIn ships four daily puzzle games but provides no way to verify or study optimal solutions. Writing a solver that actually works inside the page is non-trivial: LinkedIn checks event.isTrusted on every click so standard dispatchEvent calls are silently ignored, and the DOM is obfuscated with rebuild-hashed class names that break naive parsers every time a new bundle ships.",
+      approach:
+        "I built a Manifest V3 extension with a content script per game. Each game has an independent parser (DOM → typed board state), a pure backtracking solver (zero browser dependency, fully unit-tested), and an injector that drives the UI. LinkedIn clicks go through a background service worker that uses chrome.debugger to dispatch trusted mouse events. Zip paths are drawn via mousePressed → mouseMoved → mouseReleased drags. Parsers derive structural info from stable signals (cell count, aria-labels) instead of obfuscated CSS hashes, so they survive LinkedIn rebuilds.",
+      technicalHighlights: [
+        "Four independent backtracking solvers (Queens, Zip, Tango, Patches) written as pure functions with full Vitest coverage",
+        "Chrome Debugger API integration to dispatch event.isTrusted mouse events that LinkedIn actually accepts",
+        "Parsers derive grid size from cell count (sqrt) and use aria-labels + geometric fallbacks — resilient to LinkedIn's obfuscated class-name rebuilds",
+        "Multi-site support: separate content scripts for LinkedIn and archivedqueens.com with site-appropriate input methods (debugger vs. plain mousedown)",
+        "Drag-based input synthesis for Zip paths and Patches rectangles via sequenced mousePressed/moved/released events",
+      ],
+      results: [
+        "All four LinkedIn games solve end-to-end",
+        "22 passing unit tests across solvers and parsers",
+        "Adaptable parser architecture that survives LinkedIn bundle rebuilds",
+        "Open source on GitHub",
+      ],
+      role: "Solo developer — extension architecture, solver algorithms, DOM parsing, and Debugger API integration",
+      timeline: "April 2026 — Complete",
     },
   },
   {
     slug: "mustang-market",
     title: "Mustang Market",
     description:
-      "Peer-to-peer marketplace for Cal Poly students enabling secure buying and selling of campus items. Features real-time messaging, image uploads, and listing management. Grew to 750+ registered users with active daily listings and organic campus-wide adoption.",
+      "Peer-to-peer marketplace for Cal Poly students enabling secure buying and selling of campus items. Features real-time messaging, image uploads, and listing management. Grew to 830+ registered users with active daily listings and organic campus-wide adoption.",
     techStack: ["Next.js", "TypeScript", "Firebase", "Firestore"],
     image: "/projects/mustang-market.png",
     liveUrl: "https://www.mustang-market.com/login",
@@ -130,13 +160,13 @@ export const projects: Project[] = [
         "iOS App Store deployment via native wrapper with push notifications",
       ],
       results: [
-        "750+ registered users with organic campus adoption",
+        "830+ registered users with organic campus adoption",
         "Active daily listings across multiple categories",
         "Published on the iOS App Store",
         "Word-of-mouth growth without paid marketing",
       ],
-      role: "Solo developer — full-stack development, App Store deployment, and community growth",
-      timeline: "2024–2025 — Live",
+      role: "Product Manager & Team Lead — product direction, roadmap, full-stack development, App Store deployment, and community growth",
+      timeline: "Jan 2026 — Current",
     },
   },
 ];

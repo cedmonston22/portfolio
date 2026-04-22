@@ -10,10 +10,10 @@ interface Stat {
 }
 
 const stats: Stat[] = [
-  { value: 750, suffix: "+", label: "Mustang Market Users" },
+  { value: 830, suffix: "+", label: "Mustang Market Users" },
   { value: 90, suffix: "+", label: "ENVISION Beta Testers" },
   { value: 3, suffix: ".83", label: "GPA at Cal Poly" },
-  { value: 4, suffix: "", label: "Projects Shipped" },
+  { value: 5, suffix: "", label: "Projects Shipped" },
 ];
 
 function useCountUp(

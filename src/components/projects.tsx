@@ -39,7 +39,7 @@ export default function Projects(): React.ReactElement {
           hidden: {},
           visible: { transition: { staggerChildren: 0.15 } },
         }}
-        className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2"
+        className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2"
       >
         {projects.map((project) => (
           <ProjectCard key={project.title} project={project} />

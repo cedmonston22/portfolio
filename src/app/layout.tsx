@@ -69,6 +69,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         {children}
+        <div className="grain-overlay" aria-hidden="true" />
       </body>
     </html>
   );

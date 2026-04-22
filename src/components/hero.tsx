@@ -96,7 +96,7 @@ export default function Hero(): React.ReactElement {
   return (
     <section
       id="hero"
-      className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-6"
+      className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-6 pt-28 pb-16 md:pt-32"
     >
       <ParticleGrid />
 
@@ -174,7 +174,7 @@ export default function Hero(): React.ReactElement {
         >
           <a
             href="#projects"
-            className="group inline-flex items-center gap-2.5 rounded-lg bg-gold px-9 py-3.5 text-base font-semibold text-bg-primary shadow-md shadow-gold/10 transition-all duration-200 hover:bg-gold-light hover:shadow-lg hover:shadow-gold/20"
+            className="btn-gold group inline-flex items-center gap-2.5 rounded-lg px-9 py-3.5 text-base font-semibold"
           >
             View My Work
             <svg
@@ -195,7 +195,7 @@ export default function Hero(): React.ReactElement {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg border border-border-hover px-7 py-3.5 text-sm font-medium text-text-secondary transition-all duration-200 hover:border-gold/30 hover:text-gold hover:bg-bg-hover"
+            className="btn-glass inline-flex items-center gap-2 rounded-lg px-7 py-3.5 text-sm font-medium text-text-secondary"
           >
             <svg
               className="h-4 w-4"
@@ -214,7 +214,7 @@ export default function Hero(): React.ReactElement {
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 rounded-lg border border-border-hover px-7 py-3.5 text-sm font-medium text-text-secondary transition-all duration-200 hover:border-gold/30 hover:text-gold hover:bg-bg-hover"
+            className="btn-glass inline-flex items-center gap-2 rounded-lg px-7 py-3.5 text-sm font-medium text-text-secondary"
           >
             Get in Touch
           </a>

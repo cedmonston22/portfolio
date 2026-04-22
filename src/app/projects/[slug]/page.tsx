@@ -70,14 +70,14 @@ export default async function ProjectPage({ params }: Props): Promise<React.Reac
 
       <main className="mx-auto max-w-4xl px-6 pt-24 pb-20 md:px-8">
         {/* Hero section */}
-        <div className="relative mb-12 overflow-hidden rounded-2xl border border-border-subtle">
-          <div className="relative aspect-[16/9]">
+        <div className="relative mx-auto mb-12 max-w-2xl overflow-hidden rounded-2xl border border-border-subtle">
+          <div className="relative aspect-[16/10]">
             <Image
               src={project.image}
               alt={`${project.title} screenshot`}
               fill
               priority
-              sizes="(max-width: 896px) 100vw, 896px"
+              sizes="(max-width: 672px) 100vw, 672px"
               placeholder="blur"
               blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODk2IiBoZWlnaHQ9IjUwNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODk2IiBoZWlnaHQ9IjUwNCIgZmlsbD0iIzE4MTgxZiIvPjwvc3ZnPg=="
               className="object-cover"
