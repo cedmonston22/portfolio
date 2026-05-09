@@ -82,7 +82,7 @@ function Typewriter(): React.ReactElement {
   }, [displayed, isDeleting, wordIndex]);
 
   return (
-    <span className="text-gold">
+    <span className="text-gold-metallic">
       {displayed}
       <span className="ml-[1px] inline-block w-[2px] animate-cursor-blink bg-gold">
         &nbsp;

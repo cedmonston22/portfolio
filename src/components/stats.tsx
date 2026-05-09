@@ -76,7 +76,7 @@ function StatItem({ stat }: { stat: Stat }): React.ReactElement {
       ref={ref}
       className="rounded-xl border border-border-subtle bg-bg-elevated px-4 py-6 text-center transition-all duration-300 hover:border-gold/15 hover:bg-bg-surface"
     >
-      <span className="text-4xl font-bold text-gold md:text-5xl">
+      <span className="text-gold-metallic text-4xl font-bold md:text-5xl">
         {count}
         {stat.suffix}
       </span>

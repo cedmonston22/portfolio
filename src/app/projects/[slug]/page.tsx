@@ -149,7 +149,7 @@ export default async function ProjectPage({ params }: Props): Promise<React.Reac
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg bg-gold px-5 py-2.5 text-sm font-semibold text-bg-primary transition-all hover:brightness-110"
+                  className="btn-gold inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold"
                 >
                   View Live
                   <svg

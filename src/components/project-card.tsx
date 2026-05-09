@@ -127,12 +127,12 @@ export default function ProjectCard({
           </div>
         )}
 
-        {/* Case study link */}
+        {/* Read more link */}
         <Link
           href={`/projects/${project.slug}`}
           className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-gold transition-all duration-200 hover:text-gold-light hover:gap-2.5"
         >
-          Read Case Study
+          Read More
           <svg
             className="h-3.5 w-3.5"
             fill="none"

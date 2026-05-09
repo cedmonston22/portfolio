@@ -20,6 +20,37 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "mustang-market",
+    title: "Mustang Market",
+    description:
+      "Peer-to-peer marketplace for Cal Poly students enabling secure buying and selling of campus items. Features real-time messaging, image uploads, and listing management. Grew to 830+ registered users with active daily listings and organic campus-wide adoption.",
+    techStack: ["Next.js", "TypeScript", "Firebase", "Firestore"],
+    image: "/projects/mustang-market.png",
+    liveUrl: "https://www.mustang-market.com/login",
+    appUrl: "https://apps.apple.com/us/app/mustang-market/id6759310029",
+    caseStudy: {
+      problem:
+        "Cal Poly students relied on fragmented channels — GroupMe chats, Instagram stories, dorm bulletin boards — to buy and sell items. There was no centralized, trusted platform designed specifically for campus commerce.",
+      approach:
+        "I built a dedicated marketplace web app with Cal Poly email authentication to ensure trust, real-time messaging for buyer-seller communication, and a clean listing system with image uploads. Then wrapped it as a native iOS app for mobile access.",
+      technicalHighlights: [
+        "Firebase Auth with .edu email restriction for campus-only access and trust",
+        "Firestore real-time listeners for instant messaging and live listing updates",
+        "Image upload pipeline with compression and Firebase Storage",
+        "Next.js SSR for SEO and fast initial page loads",
+        "iOS App Store deployment via native wrapper with push notifications",
+      ],
+      results: [
+        "830+ registered users with organic campus adoption",
+        "Active daily listings across multiple categories",
+        "Published on the iOS App Store",
+        "Word-of-mouth growth without paid marketing",
+      ],
+      role: "Product Manager & Team Lead — product direction, roadmap, full-stack development, App Store deployment, and community growth",
+      timeline: "Jan 2026 — Current",
+    },
+  },
+  {
     slug: "intake",
     title: "Intake",
     description:
@@ -136,37 +167,6 @@ export const projects: Project[] = [
       ],
       role: "Solo developer — extension architecture, solver algorithms, DOM parsing, and Debugger API integration",
       timeline: "April 2026 — Complete",
-    },
-  },
-  {
-    slug: "mustang-market",
-    title: "Mustang Market",
-    description:
-      "Peer-to-peer marketplace for Cal Poly students enabling secure buying and selling of campus items. Features real-time messaging, image uploads, and listing management. Grew to 830+ registered users with active daily listings and organic campus-wide adoption.",
-    techStack: ["Next.js", "TypeScript", "Firebase", "Firestore"],
-    image: "/projects/mustang-market.png",
-    liveUrl: "https://www.mustang-market.com/login",
-    appUrl: "https://apps.apple.com/us/app/mustang-market/id6759310029",
-    caseStudy: {
-      problem:
-        "Cal Poly students relied on fragmented channels — GroupMe chats, Instagram stories, dorm bulletin boards — to buy and sell items. There was no centralized, trusted platform designed specifically for campus commerce.",
-      approach:
-        "I built a dedicated marketplace web app with Cal Poly email authentication to ensure trust, real-time messaging for buyer-seller communication, and a clean listing system with image uploads. Then wrapped it as a native iOS app for mobile access.",
-      technicalHighlights: [
-        "Firebase Auth with .edu email restriction for campus-only access and trust",
-        "Firestore real-time listeners for instant messaging and live listing updates",
-        "Image upload pipeline with compression and Firebase Storage",
-        "Next.js SSR for SEO and fast initial page loads",
-        "iOS App Store deployment via native wrapper with push notifications",
-      ],
-      results: [
-        "830+ registered users with organic campus adoption",
-        "Active daily listings across multiple categories",
-        "Published on the iOS App Store",
-        "Word-of-mouth growth without paid marketing",
-      ],
-      role: "Product Manager & Team Lead — product direction, roadmap, full-stack development, App Store deployment, and community growth",
-      timeline: "Jan 2026 — Current",
     },
   },
 ];
