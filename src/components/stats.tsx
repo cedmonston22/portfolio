@@ -10,7 +10,7 @@ interface Stat {
 }
 
 const stats: Stat[] = [
-  { value: 830, suffix: "+", label: "Mustang Market Users" },
+  { value: 875, suffix: "+", label: "Mustang Market Users" },
   { value: 90, suffix: "+", label: "ENVISION Beta Testers" },
   { value: 3, suffix: ".83", label: "GPA at Cal Poly" },
   { value: 5, suffix: "", label: "Projects Shipped" },
