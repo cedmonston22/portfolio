@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { SiDevpost } from "react-icons/si";
 import { projects } from "@/data/projects";
 import CaseStudyContent from "@/components/case-study-content";
 import Footer from "@/components/footer";
@@ -142,7 +143,10 @@ export default async function ProjectPage({ params }: Props): Promise<React.Reac
           </div>
 
           {/* Links */}
-          {(project.liveUrl || project.appUrl || project.githubUrl) && (
+          {(project.liveUrl ||
+            project.appUrl ||
+            project.githubUrl ||
+            project.devpostUrl) && (
             <div className="mt-6 flex flex-wrap gap-3">
               {project.liveUrl && (
                 <a
@@ -187,6 +191,17 @@ export default async function ProjectPage({ params }: Props): Promise<React.Reac
                   className="inline-flex items-center gap-2 rounded-lg border border-border-subtle px-5 py-2.5 text-sm font-medium text-text-secondary transition-all hover:border-gold/30 hover:text-gold"
                 >
                   GitHub
+                </a>
+              )}
+              {project.devpostUrl && (
+                <a
+                  href={project.devpostUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-lg border border-border-subtle px-5 py-2.5 text-sm font-medium text-text-secondary transition-all hover:border-gold/30 hover:text-gold"
+                >
+                  <SiDevpost className="h-4 w-4" />
+                  Devpost
                 </a>
               )}
             </div>

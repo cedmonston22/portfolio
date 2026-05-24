@@ -8,6 +8,7 @@ export interface Project {
   githubUrl?: string;
   liveUrl?: string;
   appUrl?: string;
+  devpostUrl?: string;
   caseStudy: {
     problem: string;
     approach: string;
@@ -23,8 +24,8 @@ export const projects: Project[] = [
     slug: "mustang-market",
     title: "Mustang Market",
     description:
-      "Peer-to-peer marketplace for Cal Poly students enabling secure buying and selling of campus items. Features real-time messaging, image uploads, and listing management. Grew to 875+ registered users with active daily listings and organic campus-wide adoption.",
-    techStack: ["Next.js", "TypeScript", "Firebase", "Firestore"],
+      "Marketplace platform for Cal Poly students that grew to 900+ users in three months. Gated access with Cal Poly SSO via Microsoft Azure AD so only verified calpoly.edu accounts can buy and sell, and used Groq APIs to auto-flag unwanted images and descriptions at listing creation. Shipped to both web and the iOS App Store.",
+    techStack: ["Next.js", "TypeScript", "Firebase", "Azure AD", "Groq AI"],
     image: "/projects/mustang-market.png",
     liveUrl: "https://www.mustang-market.com/login",
     appUrl: "https://apps.apple.com/us/app/mustang-market/id6759310029",
@@ -32,16 +33,16 @@ export const projects: Project[] = [
       problem:
         "Cal Poly students relied on fragmented channels — GroupMe chats, Instagram stories, dorm bulletin boards — to buy and sell items. There was no centralized, trusted platform designed specifically for campus commerce.",
       approach:
-        "I built a dedicated marketplace web app with Cal Poly email authentication to ensure trust, real-time messaging for buyer-seller communication, and a clean listing system with image uploads. Then wrapped it as a native iOS app for mobile access.",
+        "I built a dedicated marketplace web app gated behind Cal Poly SSO via Microsoft Azure AD, so only verified calpoly.edu accounts could join. I added real-time messaging for buyer-seller communication, a clean listing system with image uploads, and Groq-powered moderation that flags unwanted images and descriptions at listing creation. Then wrapped it as a native iOS app for mobile access.",
       technicalHighlights: [
-        "Firebase Auth with .edu email restriction for campus-only access and trust",
+        "Cal Poly SSO via Microsoft Azure AD, restricting access to verified calpoly.edu accounts for a trusted campus-only marketplace",
+        "Groq APIs to flag and block unwanted images and descriptions during listing creation",
         "Firestore real-time listeners for instant messaging and live listing updates",
         "Image upload pipeline with compression and Firebase Storage",
-        "Next.js SSR for SEO and fast initial page loads",
-        "iOS App Store deployment via native wrapper with push notifications",
+        "Next.js SSR for SEO and fast initial page loads, plus iOS App Store deployment with push notifications",
       ],
       results: [
-        "875+ registered users with organic campus adoption",
+        "900+ registered users in three months with organic campus adoption",
         "Active daily listings across multiple categories",
         "Published on the iOS App Store",
         "Word-of-mouth growth without paid marketing",
@@ -54,10 +55,11 @@ export const projects: Project[] = [
     slug: "vora",
     title: "Vora",
     description:
-      "A Chrome extension built at a hackathon to help people who cannot use a mouse or keyboard navigate the web by voice. Users speak a request in plain language, Vora reads the current page, uses Claude to interpret the intent, performs the action, and reports back, with subtle animations indicating when it is listening, thinking, and responding.",
+      "Voice-controlled Chrome extension built in 13 hours at Kiro Hacks so people who can't use a mouse or keyboard can navigate the web hands-free. Extracts and filters the interactive elements from each page's DOM, then uses Claude to interpret a spoken request and act on it. Built a resilient voice-activation layer that adapts to unreliable speech-to-text so the assistant triggers reliably hands-free.",
     techStack: ["Chrome Extension", "React", "TypeScript", "Web Speech API", "Claude API"],
     image: "/projects/vora.png",
     githubUrl: "https://github.com/cedmonston22/vora",
+    devpostUrl: "https://devpost.com/software/vora-soh32i",
     caseStudy: {
       problem:
         "People with motor disabilities are locked out of huge parts of the web — every site assumes a mouse and keyboard. Existing voice tools are brittle: they break on \"Vora\" itself (the Web Speech API constantly mishears it as \"nora\", \"bora\", \"flora\", or splits it across two words), they don't adapt to how an individual actually speaks, and they don't give clear feedback about whether they heard you. We had one day at a hackathon to build something that actually worked end-to-end.",
@@ -81,10 +83,41 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "job-board",
+    title: "Job Board",
+    description:
+      "Personal internship-tracking platform that scores how well each job fits you, using AI analysis of your resume against the job description. Paste a link and the job is scraped, parsed, and added to your dashboard automatically; a built-in search tab pulls from external job sites and reformats every listing so it's searchable and filterable in one place.",
+    techStack: ["Next.js", "TypeScript", "FastAPI", "Neon", "Prisma"],
+    image: "/projects/job-board.png",
+    liveUrl: "https://your-job-board.vercel.app/",
+    githubUrl: "https://github.com/cedmonston22/job-board",
+    caseStudy: {
+      problem:
+        "Tracking internship applications across spreadsheets, browser tabs, and a dozen different job boards is tedious and easy to lose control of — and there's no fast way to judge whether a given role is actually worth applying to.",
+      approach:
+        "I built a personal internship-tracking platform that does the busywork for you. Paste a job link and it scrapes and parses the posting straight into your dashboard; an AI fit-scoring layer compares your resume against each job description to rate how well you match; and a built-in search tab scrapes external job sites and reformats every listing into one searchable, filterable feed.",
+      technicalHighlights: [
+        "AI job-fit scoring that analyzes your resume against each job description to rate how well you match a role",
+        "Add-by-link ingestion: paste a URL and the posting is scraped, parsed, and added to your dashboard automatically",
+        "Job search tab that scrapes external job boards and normalizes inconsistent listing data into one searchable, filterable feed",
+        "FastAPI scraping service backing a Next.js + TypeScript frontend",
+        "Neon Postgres with Prisma for typed, schema-safe data access",
+      ],
+      results: [
+        "Centralizes application tracking, AI fit scoring, and job discovery in one dashboard",
+        "Eliminates manual data entry by auto-importing jobs from a single link",
+        "Deployed live on Vercel",
+        "Open source on GitHub",
+      ],
+      role: "Solo developer — full-stack development, scraping pipeline, AI fit scoring, and deployment",
+      timeline: "May 2026 — Current",
+    },
+  },
+  {
     slug: "linkedin-games-solver",
     title: "LinkedIn Games Solver",
     description:
-      "Chrome extension (Manifest V3) that automatically solves LinkedIn's daily puzzle games — Queens, Zip, Tango, and Patches. Parses each board directly from the DOM, runs a pure TypeScript backtracking solver, and injects the solution via the Chrome Debugger API to dispatch trusted mouse events that bypass LinkedIn's isTrusted checks.",
+      "Chrome extension that automatically solves all four of LinkedIn's daily puzzle games — Queens, Zip, Tango, and Patches. Parses each board from the DOM, solves it with a pure TypeScript backtracking algorithm (22 passing unit tests), then plays the solution by dispatching trusted mouse events through the Chrome Debugger API to get past LinkedIn's isTrusted checks.",
     techStack: ["TypeScript", "Chrome Extension", "Vitest", "Manifest V3"],
     image: "/projects/linkedin-games-solver-v2.png",
     githubUrl: "https://github.com/cedmonston22/Linkedin-Games-Solver",
@@ -114,7 +147,7 @@ export const projects: Project[] = [
     slug: "intake",
     title: "Intake",
     description:
-      "AI-powered nutrition and supplement scanner app that lets users scan any food or supplement label with their camera and instantly receive a personalized ingredient breakdown. Uses Gemini 2.5 Flash Vision for single-call label analysis, scoring products on Safety, Dosing, and Transparency at ~$0.002 per scan.",
+      "Mobile app that scans any food or supplement label with the camera and returns a personalized ingredient breakdown in under 15 seconds. Engineered a single-call Gemini 2.5 Flash Vision pipeline that extracts every ingredient and scores products on Safety, Dosing, and Transparency for ~$0.002 per scan, backed by Supabase for scan history and saved products.",
     techStack: ["React Native", "Expo", "Supabase", "Gemini AI"],
     image: "/projects/intake.png",
     liveUrl: "https://intake-landing.vercel.app/",
@@ -144,8 +177,8 @@ export const projects: Project[] = [
     slug: "envision-wardrobe",
     title: "ENVISION Wardrobe",
     description:
-      "iOS wardrobe management app taken from concept to TestFlight deployment with 90+ beta users. Features AI-powered clothing analysis via Groq's Llama 4 Vision API, automatically detecting garment categories, colors, patterns, and brands from user photos.",
-    techStack: ["React Native", "Expo", "Firebase", "Groq AI", "TypeScript"],
+      "iOS wardrobe app taken from concept to 90+ TestFlight users. Users photograph an item and Groq's Llama 4 Vision API auto-detects its type, colors, patterns, brand, and name — no manual entry. Self-hosted background removal on Google Cloud Run with rembg and Docker to cut per-image API costs entirely.",
+    techStack: ["React Native", "Expo", "Firebase", "Groq AI", "Cloud Run", "Docker"],
     image: "/projects/envision.png",
     appUrl: "https://testflight.apple.com/join/gv57D16y",
     caseStudy: {
@@ -154,7 +187,8 @@ export const projects: Project[] = [
       approach:
         "I eliminated the data entry barrier by integrating Groq's Llama 4 Vision API — users snap a photo and the AI automatically detects the garment category, colors, patterns, and brand. The app organizes everything into a visual wardrobe with filtering and outfit planning.",
       technicalHighlights: [
-        "Groq Llama 4 Vision API integration for real-time clothing analysis from photos",
+        "Groq Llama 4 Vision API integration that auto-detects an item's type, colors, patterns, brand, and name from a single photo",
+        "Self-hosted background removal on Google Cloud Run with rembg and Docker, eliminating per-image API costs",
         "Firebase backend with Firestore for real-time wardrobe sync across devices",
         "Custom image processing pipeline to optimize photos before AI analysis",
         "TestFlight deployment pipeline with automated builds via Expo EAS",
