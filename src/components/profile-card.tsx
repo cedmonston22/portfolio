@@ -170,17 +170,17 @@ export default function ProfileCard(): React.ReactElement {
 
           <div className="mt-6 max-w-xl space-y-4 text-base leading-relaxed text-text-secondary">
             <p>
-              I was an athlete before I was an engineer — thirteen years of
-              baseball, competitive enough to earn NCAA D3 offers. The years on
-              the field shaped how I work: show up early, put in the reps, trust
-              the process when progress feels slow.
+              Before I was an engineer, I was an athlete. 
+              Thirteens years of competitive baseball which led to NCAA D3 offers.
+              I didn&apos;t end up playing in college, 
+              but those years on the field shaped how I work: 
+              show up early, put the reps in, and trust the process.
             </p>
             <p>
               What started as a love for video games became a curiosity about how
               things are built, then Computer Science at Cal Poly and a drive to
               create products people actually use. I&apos;m building full-stack
-              apps across web and mobile, and looking for internship and
-              full-time roles where I can keep shipping.
+              apps across web and mobile, and looking for opportunities to grow as a person and a developer.
             </p>
           </div>
 

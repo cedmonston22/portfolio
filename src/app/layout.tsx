@@ -16,13 +16,13 @@ const spaceMono = Space_Mono({
 const siteUrl = "https://www.coleedmonston.me";
 
 export const metadata: Metadata = {
-  title: "Cole Edmonston | Software Developer",
+  title: "Cole Edmonston | Software Engineer",
   description:
-    "Software developer at Cal Poly SLO building full-stack web and mobile apps. Creator of Mustang Market (700+ users), ENVISION Wardrobe, and more.",
+    "Software engineer at Cal Poly SLO building full-stack web and mobile apps. Creator of Mustang Market (875+ users), ENVISION Wardrobe, and more.",
   metadataBase: new URL(siteUrl),
   keywords: [
     "Cole Edmonston",
-    "software developer",
+    "software engineer",
     "Cal Poly SLO",
     "full-stack developer",
     "React Native",
@@ -35,15 +35,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName: "Cole Edmonston",
-    title: "Cole Edmonston | Software Developer",
+    title: "Cole Edmonston | Software Engineer",
     description:
-      "Software developer at Cal Poly SLO building full-stack web and mobile apps. Creator of Mustang Market (700+ users), ENVISION Wardrobe, and more.",
+      "Software engineer at Cal Poly SLO building full-stack web and mobile apps. Creator of Mustang Market (875+ users), ENVISION Wardrobe, and more.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cole Edmonston | Software Developer",
+    title: "Cole Edmonston | Software Engineer",
     description:
-      "Software developer at Cal Poly SLO building full-stack web and mobile apps.",
+      "Software engineer at Cal Poly SLO building full-stack web and mobile apps.",
   },
   robots: {
     index: true,

@@ -108,7 +108,7 @@ export default async function ProjectPage({ params }: Props): Promise<React.Reac
         {/* Title + meta */}
         <div className="mb-12">
           <p className="font-mono text-xs tracking-[0.2em] text-gold uppercase">
-            Case Study
+            Overview
           </p>
           <h1 className="mt-3 text-4xl font-bold text-text-primary md:text-5xl">
             {project.title}

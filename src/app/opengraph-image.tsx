@@ -12,7 +12,7 @@ export default function Image(): ImageResponse {
     (
       <div
         style={{
-          background: "#0a0a0f",
+          background: "#f2ebd9",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -24,28 +24,38 @@ export default function Image(): ImageResponse {
       >
         <div
           style={{
-            fontSize: 72,
+            fontSize: 76,
             fontWeight: 700,
-            color: "#ffffff",
-            marginBottom: 16,
+            color: "#241c14",
+            letterSpacing: -1,
           }}
         >
           Cole Edmonston
         </div>
         <div
           style={{
-            fontSize: 36,
-            color: "#e4e4e7",
-            letterSpacing: 4,
+            width: 96,
+            height: 4,
+            background: "#a67b5b",
+            borderRadius: 2,
+            margin: "24px 0",
+          }}
+        />
+        <div
+          style={{
+            fontSize: 34,
+            color: "#a67b5b",
+            letterSpacing: 6,
+            fontWeight: 600,
           }}
         >
-          SOFTWARE DEVELOPER
+          SOFTWARE ENGINEER
         </div>
         <div
           style={{
             fontSize: 22,
-            color: "#a0a0b0",
-            marginTop: 24,
+            color: "#8a7d6c",
+            marginTop: 28,
           }}
         >
           coleedmonston.me
