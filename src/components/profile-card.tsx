@@ -131,8 +131,8 @@ export default function ProfileCard(): React.ReactElement {
             />
           ))}
 
-          {/* Dots — indicate and switch the active photo */}
-          <div className="absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 gap-2">
+          {/* Dots — tap to switch the active photo (padded for a larger touch target) */}
+          <div className="absolute bottom-1 left-1/2 z-10 flex -translate-x-1/2">
             {PHOTOS.map((photo, i) => (
               <button
                 key={photo.src}
@@ -140,10 +140,14 @@ export default function ProfileCard(): React.ReactElement {
                 aria-label={`Show ${photo.alt}`}
                 aria-current={active === i}
                 onClick={() => setActive(i)}
-                className={`h-2 rounded-full shadow-[0_1px_3px_rgba(0,0,0,0.5)] transition-all ${
-                  active === i ? "w-5 bg-white" : "w-2 bg-white/50 hover:bg-white/80"
-                }`}
-              />
+                className="group flex items-center justify-center p-2.5"
+              >
+                <span
+                  className={`h-2.5 w-2.5 rounded-full shadow-[0_1px_3px_rgba(0,0,0,0.5)] transition-colors ${
+                    active === i ? "bg-white" : "bg-white/50 group-hover:bg-white/80"
+                  }`}
+                />
+              </button>
             ))}
           </div>
         </motion.div>

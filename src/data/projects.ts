@@ -169,34 +169,4 @@ export const projects: Project[] = [
       timeline: "November 2025 — Jan 2026",
     },
   },
-  {
-    slug: "noteseq",
-    title: "NoteSeq",
-    description:
-      "Real-time collaborative note-taking app inspired by Notion and Logseq. Features block-based WYSIWYG editing powered by TipTap, live multiplayer cursors via Yjs CRDT, bidirectional backlinks, an interactive knowledge graph, daily journals, and a full import/export system.",
-    techStack: ["Next.js", "Convex", "TipTap", "Yjs", "Tailwind CSS"],
-    image: "/projects/noteseq.png",
-    githubUrl: "https://github.com/cedmonston22/noteseq",
-    caseStudy: {
-      problem:
-        "Existing note-taking tools force a tradeoff: Notion has great collaboration but weak linking, Logseq has powerful bidirectional links but no real-time multiplayer. I wanted both — a tool where teams can collaborate live while building a connected knowledge base.",
-      approach:
-        "I combined TipTap's block-based WYSIWYG editor with Yjs CRDTs for conflict-free real-time collaboration, layered on top of Convex for reactive data sync. Bidirectional backlinks and an interactive knowledge graph let users see how their notes connect.",
-      technicalHighlights: [
-        "Yjs CRDT integration for conflict-free real-time collaboration with live multiplayer cursors",
-        "TipTap block-based editor with custom extensions for backlinks and embeds",
-        "Interactive knowledge graph visualization showing connections between notes",
-        "Convex reactive backend — zero-latency UI updates without manual cache management",
-        "Full import/export system supporting Markdown and JSON formats",
-      ],
-      results: [
-        "Fully functional collaborative editor with real-time sync",
-        "Knowledge graph with bidirectional link traversal",
-        "Daily journal system with automatic date linking",
-        "Open source on GitHub",
-      ],
-      role: "Solo developer — architecture, real-time sync, editor customization, and UI design",
-      timeline: "Feb 2026 — Complete",
-    },
-  },
 ];

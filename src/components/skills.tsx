@@ -15,7 +15,7 @@ export default function Skills(): React.ReactElement {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
+        viewport={{ once: true, amount: 0.15 }}
         transition={{ duration: 0.6 }}
       >
         <p className="font-mono text-xs tracking-[0.2em] text-gold uppercase">
@@ -29,7 +29,7 @@ export default function Skills(): React.ReactElement {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-80px" }}
+        viewport={{ once: true, amount: 0.15 }}
         variants={{
           hidden: {},
           visible: { transition: { staggerChildren: 0.1 } },
