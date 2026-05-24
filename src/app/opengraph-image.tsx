@@ -35,7 +35,7 @@ export default function Image(): ImageResponse {
         <div
           style={{
             fontSize: 36,
-            color: "#d4a843",
+            color: "#e4e4e7",
             letterSpacing: 4,
           }}
         >

@@ -1,39 +1,39 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Background tones */
-  --color-bg-primary: #0a0a0f;
-  --color-bg-elevated: #111118;
-  --color-bg-surface: #18181f;
-  --color-bg-hover: #1f1f28;
+  /* Background tones (cream / light) */
+  --color-bg-primary: #f2ebd9;
+  --color-bg-elevated: #f8f2e6;
+  --color-bg-surface: #fdf9f0;
+  --color-bg-hover: #ebe3cf;
 
   /* Legacy aliases */
-  --color-charcoal: #0a0a0f;
-  --color-charcoal-light: #111118;
-  --color-charcoal-lighter: #18181f;
+  --color-charcoal: #f2ebd9;
+  --color-charcoal-light: #f8f2e6;
+  --color-charcoal-lighter: #fdf9f0;
 
-  /* Text */
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #a0a0b0;
-  --color-text-muted: #66667a;
+  /* Text (espresso brown) */
+  --color-text-primary: #241c14;
+  --color-text-secondary: #4a3f34;
+  --color-text-muted: #756656;
 
-  /* Grey scale */
-  --color-grey-300: #d1d5db;
-  --color-grey-400: #a0a0b0;
-  --color-grey-500: #66667a;
-  --color-grey-600: #4b5563;
-  --color-grey-700: #2a2a35;
-  --color-grey-800: #1f1f28;
+  /* Grey scale (warm brown-grey) */
+  --color-grey-300: #54443a;
+  --color-grey-400: #756656;
+  --color-grey-500: #8f8070;
+  --color-grey-600: #a89a86;
+  --color-grey-700: #8a7c68;
+  --color-grey-800: #c0b39a;
 
-  /* Gold */
-  --color-gold-100: #f2d479;
-  --color-gold: #d4a843;
-  --color-gold-light: #f2d479;
-  --color-gold-dark: #8b6d2e;
+  /* Accent (café au lait) */
+  --color-gold-100: #b8916f;
+  --color-gold: #a67b5b;
+  --color-gold-light: #8a6244;
+  --color-gold-dark: #c0a487;
 
   /* Borders */
-  --color-border-subtle: rgba(255, 255, 255, 0.06);
-  --color-border-hover: rgba(255, 255, 255, 0.12);
+  --color-border-subtle: rgba(0, 0, 0, 0.08);
+  --color-border-hover: rgba(0, 0, 0, 0.14);
 
   /* Fonts */
   --font-sans: var(--font-outfit);
@@ -57,16 +57,6 @@ body {
 }
 
 
-/* Cursor blink — precise timing for typewriter */
-@keyframes cursor-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-.animate-cursor-blink {
-  animation: cursor-blink 0.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
 /* Pulse glow */
 @keyframes pulse-glow {
   0%, 100% { opacity: 0.4; }
@@ -79,9 +69,26 @@ body {
   100% { background-position: 200% 0; }
 }
 
-/* Subtle gold glow for hover states */
-.glow-gold {
-  box-shadow: 0 0 20px rgba(212, 168, 67, 0.08), 0 0 40px rgba(212, 168, 67, 0.04);
+/* Horizontal marquee — slides content left-to-right, loops seamlessly */
+@keyframes marquee {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.animate-marquee {
+  animation: marquee 26s linear infinite;
+}
+
+/* Edge fade — words fade in/out at the left and right of the track */
+.marquee-fade {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
 }
 
 /* Card lift — reusable hover elevation */
@@ -90,9 +97,9 @@ body {
 }
 
 .card-hover:hover {
-  border-color: rgba(212, 168, 67, 0.15);
+  border-color: rgba(0, 0, 0, 0.14);
   background-color: var(--color-bg-surface);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(212, 168, 67, 0.06);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.05);
   transform: translateY(-2px);
 }
 
@@ -108,109 +115,23 @@ body {
   background-size: 220px 220px;
 }
 
-/* Metallic gold text — mirrors the .btn-gold gradient via background-clip */
+/* Metallic text — mirrors the .btn-gold gradient via background-clip */
 .text-gold-metallic {
-  background-image: linear-gradient(180deg, #ecc46d 0%, #d4a843 52%, #b4892e 100%);
+  background-image: linear-gradient(180deg, #b8916f 0%, #a67b5b 52%, #8a6244 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
 }
 
-/* Metallic gold primary button */
+/* Primary button — flat, minimal */
 .btn-gold {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  color: var(--color-bg-primary);
-  background-image: linear-gradient(180deg, #ecc46d 0%, #d4a843 52%, #b4892e 100%);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 240, 200, 0.45),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.22),
-    0 4px 14px rgba(212, 168, 67, 0.22),
-    0 1px 2px rgba(0, 0, 0, 0.35);
-  transition:
-    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 220ms ease,
-    filter 220ms ease;
+  color: var(--color-bg-surface);
+  background-color: var(--color-text-primary);
+  transition: background-color 180ms ease;
 }
 .btn-gold:hover {
-  filter: brightness(1.06);
-  transform: translateY(-1px);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 240, 200, 0.55),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.22),
-    0 8px 22px rgba(212, 168, 67, 0.38),
-    0 2px 4px rgba(0, 0, 0, 0.35);
-}
-.btn-gold:active {
-  transform: translateY(0) scale(0.985);
-  filter: brightness(0.98);
-}
-.btn-gold::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  z-index: -1;
-  background: linear-gradient(
-    110deg,
-    transparent 30%,
-    rgba(255, 255, 255, 0.28) 48%,
-    rgba(255, 255, 255, 0) 70%
-  );
-  transform: translateX(-120%);
-  transition: transform 850ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-.btn-gold:hover::before {
-  transform: translateX(120%);
-}
-
-/* Glass secondary button */
-.btn-glass {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.025);
-  backdrop-filter: blur(10px) saturate(140%);
-  -webkit-backdrop-filter: blur(10px) saturate(140%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 1px 2px rgba(0, 0, 0, 0.25);
-  transition:
-    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 220ms ease,
-    background-color 220ms ease,
-    color 220ms ease,
-    box-shadow 220ms ease;
-}
-.btn-glass:hover {
-  border-color: rgba(212, 168, 67, 0.42);
-  background-color: rgba(212, 168, 67, 0.06);
-  color: var(--color-gold);
-  transform: translateY(-1px);
-  box-shadow:
-    inset 0 1px 0 rgba(212, 168, 67, 0.15),
-    0 4px 14px rgba(212, 168, 67, 0.12);
-}
-.btn-glass:active {
-  transform: translateY(0) scale(0.985);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .btn-gold,
-  .btn-glass {
-    transition: none;
-  }
-  .btn-gold::before {
-    display: none;
-  }
-  .btn-gold:hover,
-  .btn-glass:hover,
-  .btn-gold:active,
-  .btn-glass:active {
-    transform: none;
-  }
+  background-color: #3a2d23;
 }
 
 /* Custom scrollbar */

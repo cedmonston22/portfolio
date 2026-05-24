@@ -8,7 +8,6 @@ const navLinks = [
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },
-  { label: "Contact", href: "#contact" },
   { label: "Resume", href: "/resume.pdf", isExternal: true },
 ];
 
@@ -32,18 +31,11 @@ export default function Navbar(): React.ReactElement {
       aria-label="Main navigation"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-bg-primary/80 backdrop-blur-xl border-b border-border-subtle shadow-lg shadow-black/30"
+          ? "bg-bg-primary/80 backdrop-blur-xl border-b border-border-subtle shadow-lg shadow-black/10"
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 md:px-8">
-        <a
-          href="#hero"
-          className="text-lg font-bold tracking-tight text-gold"
-        >
-          CE.
-        </a>
-
+      <div className="mx-auto flex max-w-6xl items-center justify-end px-6 py-5 md:px-8">
         {/* Desktop links */}
         <ul className="hidden gap-8 md:flex">
           {navLinks.map((link) => (

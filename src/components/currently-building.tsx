@@ -70,7 +70,7 @@ export default function CurrentlyBuilding(): React.ReactElement {
                 },
               },
             }}
-            className="rounded-xl border border-border-subtle bg-bg-elevated p-5 transition-all hover:border-[rgba(212,168,67,0.2)] hover:bg-bg-surface md:p-6"
+            className="rounded-xl border border-border-subtle bg-bg-elevated p-5 transition-all hover:border-[rgba(0,0,0,0.14)] hover:bg-bg-surface md:p-6"
           >
             <div className="flex items-start justify-between gap-4">
               <div className="min-w-0 flex-1">

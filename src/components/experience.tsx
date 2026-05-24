@@ -38,7 +38,7 @@ export default function Experience(): React.ReactElement {
           }}
         >
           <h3 className="flex items-center gap-3 text-lg font-semibold text-text-primary">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[rgba(212,168,67,0.1)]">
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[rgba(0,0,0,0.05)]">
               <svg
                 className="h-4 w-4 text-gold"
                 fill="none"
@@ -118,7 +118,7 @@ export default function Experience(): React.ReactElement {
           }}
         >
           <h3 className="flex items-center gap-3 text-lg font-semibold text-text-primary">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[rgba(212,168,67,0.1)]">
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[rgba(0,0,0,0.05)]">
               <svg
                 className="h-4 w-4 text-gold"
                 fill="none"
