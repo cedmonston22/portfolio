@@ -18,15 +18,19 @@ const siteUrl = "https://www.coleedmonston.me";
 export const metadata: Metadata = {
   title: "Cole Edmonston | Software Engineer",
   description:
-    "Software engineer at Cal Poly SLO building full-stack web and mobile apps. Creator of Mustang Market (900+ users), ENVISION Wardrobe, and more.",
+    "Computer Science student at Cal Poly SLO working across the stack: React, React Native, Python, AWS. Creator of Mustang Market (900+ users) and ENVISION Wardrobe.",
   metadataBase: new URL(siteUrl),
   keywords: [
     "Cole Edmonston",
     "software engineer",
     "Cal Poly SLO",
     "full-stack developer",
+    "backend engineer",
+    "distributed systems",
     "React Native",
     "Next.js",
+    "Python",
+    "AWS",
     "portfolio",
   ],
   authors: [{ name: "Cole Edmonston" }],
@@ -37,13 +41,13 @@ export const metadata: Metadata = {
     siteName: "Cole Edmonston",
     title: "Cole Edmonston | Software Engineer",
     description:
-      "Software engineer at Cal Poly SLO building full-stack web and mobile apps. Creator of Mustang Market (900+ users), ENVISION Wardrobe, and more.",
+      "Computer Science student at Cal Poly SLO working across the stack: React, React Native, Python, AWS. Creator of Mustang Market (900+ users) and ENVISION Wardrobe.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Cole Edmonston | Software Engineer",
     description:
-      "Software engineer at Cal Poly SLO building full-stack web and mobile apps.",
+      "Computer Science student at Cal Poly SLO working across the stack: React, React Native, Python, AWS.",
   },
   robots: {
     index: true,

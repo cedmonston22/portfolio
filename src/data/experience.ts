@@ -20,7 +20,7 @@ export const education: Education[] = [
     degree: "B.S. Computer Science",
     location: "San Luis Obispo, CA",
     year: "2029",
-    highlights: ["3.83 GPA", "Dean's List (Fall 2025, Winter 2026)"],
+    highlights: ["3.82 GPA", "President's List (2025–2026)"],
   },
   {
     school: "Clayton Valley Charter High School",
@@ -37,23 +37,25 @@ export const education: Education[] = [
 
 export const experience: Experience[] = [
   {
-    company: "The Facility CA",
-    role: "Employee",
-    location: "Concord, CA",
-    period: "Nov 2024 — Mar 2025",
+    company: "Spread Goodness",
+    role: "Software Engineering Intern",
+    location: "Remote · Santa Barbara, CA",
+    period: "May 2026 — Present",
     bullets: [
-      "Promoted high customer satisfaction by resolving problems with knowledgeable and friendly service.",
-      "Assisted with customer requests and answered questions to improve satisfaction.",
+      "Built regression test suites for critical user flows using Docker containers and the Firebase emulator.",
+      "Designed and implemented seed data generation to simulate realistic user states, enabling consistent, repeatable test runs.",
+      "Wrote test scripts with Playwright, integrated with GitHub Actions to run automated regression checks on every change.",
     ],
   },
   {
     company: "Math Tutor",
     role: "Self-Employed",
-    location: "Clayton, CA",
+    location: "Hybrid · Clayton, CA",
     period: "Nov 2023 — Apr 2024",
     bullets: [
-      "Led one-on-one tutoring sessions in Algebra 1 and Algebra 2 for middle and high school students.",
-      "Offered both remote and in-person sessions, adapting teaching approach to each student.",
+      "Helped students improve grades through structured one-on-one sessions in Algebra 1 and Algebra 2.",
+      "Tracked student grades on a graph to give them a visual representation of their growth.",
+      "Adapted teaching approach to individual learning styles, delivering sessions both remotely and in-person.",
     ],
   },
 ];

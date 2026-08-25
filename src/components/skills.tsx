@@ -47,7 +47,7 @@ export default function Skills(): React.ReactElement {
                 transition: { duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] },
               },
             }}
-            className="rounded-xl border border-border-subtle bg-bg-elevated p-5 transition-all duration-300 hover:border-gold/15 hover:bg-bg-surface"
+            className="surface-card rounded-xl border border-border-subtle bg-bg-elevated p-5 transition-all duration-300 hover:border-border-hover hover:bg-bg-surface"
           >
             <h3 className="font-mono text-[10px] tracking-[0.2em] text-gold uppercase">
               {category.name}
@@ -61,8 +61,7 @@ export default function Skills(): React.ReactElement {
                     className="group/skill flex items-center gap-3 rounded-lg px-2 py-1.5 text-sm text-text-secondary transition-all duration-200 hover:bg-bg-hover hover:text-text-primary"
                   >
                     <Icon
-                      className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover/skill:scale-110"
-                      style={{ color: skill.color }}
+                      className="h-4 w-4 shrink-0 text-text-secondary transition-all duration-200 group-hover/skill:scale-110 group-hover/skill:text-gold"
                     />
                     {skill.name}
                   </li>

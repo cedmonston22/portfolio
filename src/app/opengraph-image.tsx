@@ -51,7 +51,7 @@ export default async function Image(): Promise<ImageResponse> {
               fontSize: 24,
               letterSpacing: 6,
               fontWeight: 600,
-              color: "#a67b5b",
+              color: "#8a6244",
             }}
           >
             COMPUTER SCIENCE · CAL POLY SLO
@@ -74,7 +74,7 @@ export default async function Image(): Promise<ImageResponse> {
             style={{
               width: 104,
               height: 5,
-              background: "#a67b5b",
+              background: "#8a6244",
               borderRadius: 3,
               margin: "32px 0",
             }}

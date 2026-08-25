@@ -2,13 +2,13 @@
 
 import { motion } from "framer-motion";
 import { projects } from "@/data/projects";
-import ProjectCard from "./project-card";
+import ProjectRow from "./project-row";
 
 export default function Projects(): React.ReactElement {
   return (
     <section
       id="projects"
-      className="relative mx-auto max-w-5xl px-6 py-20 md:px-8 md:py-32"
+      className="relative mx-auto max-w-6xl px-6 py-20 md:px-8 md:py-32"
     >
       {/* Section divider */}
       <div className="absolute top-0 left-1/2 h-[1px] w-3/4 -translate-x-1/2 bg-gradient-to-r from-transparent via-border-subtle to-transparent" />
@@ -26,23 +26,23 @@ export default function Projects(): React.ReactElement {
           Featured Projects
         </h2>
         <p className="mt-3 max-w-lg text-text-secondary">
-          A selection of projects I&apos;ve built. Each one taught me something
-          new about building great software.
+          A selection of things I&apos;ve built, and the engineering behind
+          them.
         </p>
       </motion.div>
 
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={{ once: true, amount: 0.05 }}
         variants={{
           hidden: {},
-          visible: { transition: { staggerChildren: 0.15 } },
+          visible: { transition: { staggerChildren: 0.12 } },
         }}
-        className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2"
+        className="mt-12 space-y-12 md:space-y-16"
       >
-        {projects.map((project) => (
-          <ProjectCard key={project.title} project={project} />
+        {projects.map((project, i) => (
+          <ProjectRow key={project.slug} project={project} priority={i === 0} />
         ))}
       </motion.div>
     </section>

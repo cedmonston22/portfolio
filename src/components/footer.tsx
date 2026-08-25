@@ -45,12 +45,6 @@ export default function Footer(): React.ReactElement {
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
           {/* Brand */}
           <div className="flex flex-col items-center gap-2 sm:items-start">
-            <a
-              href="#hero"
-              className="text-lg font-bold tracking-tight text-gold"
-            >
-              CE.
-            </a>
             <p className="font-mono text-[10px] tracking-wider text-text-muted uppercase">
               &copy; {new Date().getFullYear()} Cole Edmonston
             </p>

@@ -3,37 +3,28 @@
 @theme inline {
   /* Background tones (cream / light) */
   --color-bg-primary: #f2ebd9;
-  --color-bg-elevated: #f8f2e6;
-  --color-bg-surface: #fdf9f0;
+  --color-bg-elevated: #fcf8ee;
+  --color-bg-surface: #fffdf7;
   --color-bg-hover: #ebe3cf;
-
-  /* Legacy aliases */
-  --color-charcoal: #f2ebd9;
-  --color-charcoal-light: #f8f2e6;
-  --color-charcoal-lighter: #fdf9f0;
 
   /* Text (espresso brown) */
   --color-text-primary: #241c14;
   --color-text-secondary: #4a3f34;
   --color-text-muted: #756656;
 
-  /* Grey scale (warm brown-grey) */
-  --color-grey-300: #54443a;
-  --color-grey-400: #756656;
-  --color-grey-500: #8f8070;
+  /* Grey scale — only these two are live (scrollbar thumb + its hover) */
   --color-grey-600: #a89a86;
   --color-grey-700: #8a7c68;
-  --color-grey-800: #c0b39a;
 
-  /* Accent (café au lait) */
-  --color-gold-100: #b8916f;
-  --color-gold: #a67b5b;
-  --color-gold-light: #8a6244;
-  --color-gold-dark: #c0a487;
+  /* Accent (café au lait) — ramp runs light → dark to match the light theme.
+     `gold` is the default accent and is the only one safe for small text. */
+  --color-gold-light: #a67b5b;
+  --color-gold: #8a6244;
+  --color-gold-dark: #6b4a33;
 
-  /* Borders */
-  --color-border-subtle: rgba(0, 0, 0, 0.08);
-  --color-border-hover: rgba(0, 0, 0, 0.14);
+  /* Borders — espresso alpha rather than neutral black, so edges stay warm */
+  --color-border-subtle: rgba(36, 28, 20, 0.12);
+  --color-border-hover: rgba(36, 28, 20, 0.22);
 
   /* Fonts */
   --font-sans: var(--font-outfit);
@@ -57,50 +48,34 @@ body {
 }
 
 
-/* Pulse glow */
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
-}
-
-/* Shimmer button */
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-/* Horizontal marquee — slides content left-to-right, loops seamlessly */
-@keyframes marquee {
-  from { transform: translateX(-50%); }
-  to { transform: translateX(0); }
-}
-
-.animate-marquee {
-  animation: marquee 26s linear infinite;
-}
-
-/* Edge fade — words fade in/out at the left and right of the track */
-.marquee-fade {
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
-  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .animate-marquee {
+  .animate-ping {
     animation: none;
   }
 }
 
-/* Card lift — reusable hover elevation */
+/* Resting elevation — every card sits on the page, not in it */
+.surface-card,
+.card-hover {
+  box-shadow: 0 1px 2px rgba(36, 28, 20, 0.04), 0 4px 12px rgba(36, 28, 20, 0.05);
+}
+
+/* Card lift — resting elevation plus hover, for cards that are actually targets */
 .card-hover {
   transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .card-hover:hover {
-  border-color: rgba(0, 0, 0, 0.14);
+  border-color: var(--color-border-hover);
   background-color: var(--color-bg-surface);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 28px rgba(36, 28, 20, 0.12), 0 0 0 1px rgba(36, 28, 20, 0.04);
   transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-hover:hover {
+    transform: none;
+  }
 }
 
 /* Film grain overlay — fixed, non-interactive, site-wide texture */
@@ -115,23 +90,27 @@ body {
   background-size: 220px 220px;
 }
 
-/* Metallic text — mirrors the .btn-gold gradient via background-clip */
-.text-gold-metallic {
-  background-image: linear-gradient(180deg, #b8916f 0%, #a67b5b 52%, #8a6244 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Primary button — flat, minimal */
-.btn-gold {
+/* Primary button — flat, minimal. Transparent border keeps it the same
+   height as .btn-secondary, whose 1px border would otherwise make it taller. */
+.btn-primary {
   color: var(--color-bg-surface);
   background-color: var(--color-text-primary);
+  border: 1px solid transparent;
   transition: background-color 180ms ease;
 }
-.btn-gold:hover {
+.btn-primary:hover {
   background-color: #3a2d23;
+}
+
+/* Secondary button — outlined, matching the social icon buttons */
+.btn-secondary {
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border-subtle);
+  transition: border-color 180ms ease, color 180ms ease;
+}
+.btn-secondary:hover {
+  border-color: var(--color-border-hover);
+  color: var(--color-gold);
 }
 
 /* Custom scrollbar */

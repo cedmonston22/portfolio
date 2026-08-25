@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -8,35 +8,6 @@ const PHOTOS = [
   { src: "/headshot.jpg", alt: "Cole Edmonston", fit: "object-cover object-top" },
   { src: "/baseball-action.jpg", alt: "Cole Edmonston playing baseball", fit: "object-cover object-center" },
 ];
-
-const CROSSFADE_INTERVAL = 6000;
-
-const ROTATING_WORDS = [
-  "Entrepreneurship",
-  "Full-Stack Development",
-  "Software Engineering",
-  "AI Integration",
-  "Machine Learning",
-];
-
-function RotatingWords(): React.ReactElement {
-  // Doubled list so the marquee loops seamlessly (translate by exactly one set).
-  return (
-    <div className="marquee-fade w-full overflow-hidden text-xl">
-      <div className="animate-marquee flex w-max whitespace-nowrap">
-        {[...ROTATING_WORDS, ...ROTATING_WORDS].map((word, i) => (
-          <span
-            key={i}
-            className="mx-4 inline-flex items-center gap-4 font-medium text-gold"
-          >
-            {word}
-            <span aria-hidden className="text-text-muted/70">·</span>
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 const socialLinks = [
   {
@@ -74,48 +45,19 @@ const socialLinks = [
 
 export default function ProfileCard(): React.ReactElement {
   const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const nameRef = useRef<HTMLHeadingElement>(null);
-  const [nameWidth, setNameWidth] = useState<number | undefined>(undefined);
-
-  // Match the marquee width to the rendered width of the name.
-  useEffect(() => {
-    const el = nameRef.current;
-    if (!el) return;
-
-    const update = (): void => setNameWidth(el.offsetWidth);
-    update();
-
-    const observer = new ResizeObserver(update);
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (paused) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    const id = setInterval(() => {
-      setActive((prev) => (prev + 1) % PHOTOS.length);
-    }, CROSSFADE_INTERVAL);
-
-    return () => clearInterval(id);
-  }, [paused]);
 
   return (
     <section
       id="hero"
-      className="relative flex min-h-dvh items-center justify-center px-6 py-28 md:py-32"
+      className="relative flex min-h-dvh items-center justify-center px-6 py-16 md:py-32"
     >
-      <div className="flex w-full max-w-5xl flex-col items-center gap-10 md:flex-row md:gap-14">
-        {/* Photo — cross-fades headshot ↔ baseball, pauses on hover */}
+      <div className="flex w-full max-w-5xl flex-col items-center gap-8 md:flex-row md:gap-14">
+        {/* Photo — headshot by default; dots switch to the action shot */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="relative aspect-[4/5] w-full max-w-[360px] shrink-0 overflow-hidden rounded-2xl border border-border-subtle bg-bg-hover shadow-[0_8px_40px_rgba(0,0,0,0.12)] md:w-[360px]"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
+          className="relative aspect-[4/5] w-full max-w-[200px] shrink-0 overflow-hidden rounded-2xl border border-border-subtle bg-bg-hover shadow-[0_8px_40px_rgba(0,0,0,0.12)] sm:max-w-[260px] md:w-[340px] md:max-w-[340px]"
         >
           {PHOTOS.map((photo, i) => (
             <Image
@@ -124,8 +66,8 @@ export default function ProfileCard(): React.ReactElement {
               alt={photo.alt}
               fill
               priority={i === 0}
-              sizes="(max-width: 768px) 100vw, 380px"
-              className={`${photo.fit} transition-opacity duration-[3000ms] ease-in-out ${
+              sizes="(max-width: 640px) 200px, (max-width: 768px) 260px, 340px"
+              className={`${photo.fit} transition-opacity duration-500 ease-in-out ${
                 active === i ? "opacity-100" : "opacity-0"
               }`}
             />
@@ -160,44 +102,61 @@ export default function ProfileCard(): React.ReactElement {
           className="w-full min-w-0 md:flex-1"
         >
           <p className="font-mono text-xs tracking-[0.2em] text-gold uppercase">
-            Computer Science · Cal Poly SLO
+            Computer Science · Cal Poly SLO · Class of 2029
           </p>
-          <h1
-            ref={nameRef}
-            className="mt-3 inline-block text-5xl font-bold leading-[1.05] tracking-tight text-text-primary sm:text-6xl"
-          >
+
+          <h1 className="mt-3 text-5xl font-bold leading-[1.05] tracking-tight text-text-primary sm:text-6xl">
             Cole Edmonston
           </h1>
-          <div className="mt-3" style={{ width: nameWidth }}>
-            <RotatingWords />
-          </div>
 
-          <div className="mt-6 max-w-xl space-y-4 text-base leading-relaxed text-text-secondary">
-            <p>
-              Before I was an engineer, I was an athlete. 
-              Thirteens years of competitive baseball which led to NCAA D3 offers.
-              I didn&apos;t end up playing in college, 
-              but those years on the field shaped how I work: 
-              show up early, put the reps in, and trust the process.
-            </p>
-            <p>
-              What started as a love for video games became a curiosity about how
-              things are built, then Computer Science at Cal Poly and a drive to
-              create products people actually use. I&apos;m building full-stack
-              apps across web and mobile, and looking for opportunities to grow as a person and a developer.
-            </p>
-          </div>
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-text-secondary">
+            Before I was an engineer, I was an athlete. Thirteen years of
+            baseball, competitive enough to earn NCAA D3 offers. I didn&rsquo;t
+            play in college, but the years on the field shaped how I work.
+          </p>
+
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-text-secondary">
+            A love for video games turned into curiosity about how things get
+            built, and then into a drive to make products people actually use.
+            Since then I&rsquo;ve worked across the stack, from the interface
+            people touch to the systems running behind it. I&rsquo;m looking for
+            internship opportunities where I can keep building, keep learning,
+            and contribute to a team.
+          </p>
+
+          {/* Availability — the first thing a recruiter scans for */}
+          <p className="mt-8 flex items-center gap-2.5 font-mono text-xs tracking-wider text-text-muted uppercase">
+            <span className="relative flex h-2 w-2 shrink-0">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-gold" />
+            </span>
+            Available for 2027 internships
+          </p>
 
           {/* Actions */}
           <div
             id="contact"
-            className="mt-8 flex flex-wrap items-center gap-3 scroll-mt-24"
+            className="mt-5 flex flex-wrap items-center gap-3 scroll-mt-24"
           >
+            <a
+              href="#projects"
+              className="btn-primary inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold"
+            >
+              View projects
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3"
+                />
+              </svg>
+            </a>
+
             <a
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-gold inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold"
+              className="btn-secondary inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold"
             >
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
                 <path

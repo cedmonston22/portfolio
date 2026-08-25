@@ -84,7 +84,7 @@ export default function Experience(): React.ReactElement {
                       </p>
                     )}
                   </div>
-                  <span className="shrink-0 rounded-md bg-bg-hover px-2.5 py-1 font-mono text-[10px] tracking-wider text-text-muted uppercase">
+                  <span className="shrink-0 rounded-md bg-bg-hover px-2.5 py-1 font-mono text-[10px] tracking-wider text-text-secondary uppercase">
                     {edu.year}
                   </span>
                 </div>
@@ -162,7 +162,7 @@ export default function Experience(): React.ReactElement {
                       {exp.role}
                     </p>
                   </div>
-                  <span className="shrink-0 rounded-md bg-bg-hover px-2.5 py-1 font-mono text-[10px] tracking-wider text-text-muted uppercase">
+                  <span className="shrink-0 rounded-md bg-bg-hover px-2.5 py-1 font-mono text-[10px] tracking-wider text-text-secondary uppercase">
                     {exp.period}
                   </span>
                 </div>

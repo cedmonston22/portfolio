@@ -1,29 +1,33 @@
 import type { IconType } from "react-icons";
 import {
-  SiJavascript,
+  SiPython,
   SiTypescript,
+  SiJavascript,
+  SiOpenjdk,
+  SiSharp,
   SiReact,
   SiNextdotjs,
-  SiTailwindcss,
   SiNodedotjs,
-  SiPython,
-  SiSupabase,
-  SiFirebase,
-
-  SiGit,
+  SiFastapi,
   SiExpo,
-  SiVercel,
-
-  SiMeta,
+  SiTailwindcss,
+  SiVite,
+  SiDocker,
+  SiGooglecloud,
+  SiRedis,
+  SiElasticsearch,
+  SiPostgresql,
+  SiPrisma,
+  SiFirebase,
+  SiSupabase,
+  SiGit,
 } from "react-icons/si";
-import { RiGeminiFill } from "react-icons/ri";
-import { TbApi, TbBrain } from "react-icons/tb";
-import { VscCode } from "react-icons/vsc";
+import { TbLambda, TbExchange } from "react-icons/tb";
+import { SiPlaywright } from "./icons";
 
 export interface Skill {
   name: string;
   icon: IconType;
-  color: string;
 }
 
 export interface SkillCategory {
@@ -33,43 +37,51 @@ export interface SkillCategory {
 
 export const skillCategories: SkillCategory[] = [
   {
-    name: "Frontend",
+    name: "Languages",
     skills: [
-      { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
-      { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
-      { name: "React", icon: SiReact, color: "#61DAFB" },
-      { name: "React Native", icon: SiReact, color: "#61DAFB" },
-      { name: "Next.js", icon: SiNextdotjs, color: "#FFFFFF" },
-      { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
+      { name: "Python", icon: SiPython },
+      { name: "TypeScript", icon: SiTypescript },
+      { name: "JavaScript", icon: SiJavascript },
+      { name: "Java", icon: SiOpenjdk },
+      { name: "C#", icon: SiSharp },
     ],
   },
   {
-    name: "Backend",
+    name: "Frameworks",
     skills: [
-      { name: "Node.js", icon: SiNodedotjs, color: "#5FA04E" },
-      { name: "Python", icon: SiPython, color: "#3776AB" },
-      { name: "Supabase", icon: SiSupabase, color: "#3FCF8E" },
-      { name: "Firebase", icon: SiFirebase, color: "#DD2C00" },
+      { name: "React", icon: SiReact },
+      { name: "React Native", icon: SiReact },
+      { name: "Next.js", icon: SiNextdotjs },
+      { name: "Node.js", icon: SiNodedotjs },
+      { name: "FastAPI", icon: SiFastapi },
+      { name: "Expo", icon: SiExpo },
+      { name: "Tailwind CSS", icon: SiTailwindcss },
+      { name: "Vite", icon: SiVite },
     ],
   },
   {
-    name: "AI / APIs",
+    name: "Infrastructure & Tools",
     skills: [
-      { name: "Gemini AI", icon: RiGeminiFill, color: "#8E75B2" },
-      { name: "Groq AI", icon: TbApi, color: "#F55036" },
-      { name: "Llama", icon: SiMeta, color: "#0082FB" },
-      { name: "Claude AI", icon: TbBrain, color: "#D97757" },
-      { name: "Claude Code", icon: TbBrain, color: "#D97757" },
-      { name: "REST APIs", icon: TbApi, color: "#FFFFFF" },
+      // No AWS brand marks in react-icons: TbLambda is the λ glyph AWS Lambda
+      // itself uses; TbExchange stands in for Amazon MQ's message brokering.
+      { name: "AWS Lambda", icon: TbLambda },
+      { name: "Amazon MQ", icon: TbExchange },
+      { name: "Playwright", icon: SiPlaywright },
+      { name: "Docker", icon: SiDocker },
+      { name: "Google Cloud Run", icon: SiGooglecloud },
+      { name: "Git", icon: SiGit },
     ],
   },
   {
-    name: "Tools",
+    name: "Data",
     skills: [
-      { name: "Git", icon: SiGit, color: "#F05032" },
-      { name: "Expo", icon: SiExpo, color: "#FFFFFF" },
-      { name: "Vercel", icon: SiVercel, color: "#FFFFFF" },
-      { name: "VS Code", icon: VscCode, color: "#007ACC" },
+      // Neon is managed Postgres, so the Postgres mark is the honest stand-in.
+      { name: "Neon", icon: SiPostgresql },
+      { name: "Prisma", icon: SiPrisma },
+      { name: "Redis", icon: SiRedis },
+      { name: "Elasticsearch", icon: SiElasticsearch },
+      { name: "Firebase", icon: SiFirebase },
+      { name: "Supabase", icon: SiSupabase },
     ],
   },
 ];
