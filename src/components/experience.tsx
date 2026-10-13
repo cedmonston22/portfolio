@@ -35,7 +35,7 @@ export default function Experience(): React.ReactElement {
               <h3 className="text-2xl font-bold text-text-primary md:text-3xl">{exp.company}</h3>
               <p className="mt-1 text-sm font-medium text-gold">{exp.role}</p>
 
-              {exp.bullets.length > 0 ? (
+              {exp.bullets.length > 0 && (
                 <ul className="mt-4 space-y-2">
                   {exp.bullets.map((bullet) => (
                     <li key={bullet} className="flex gap-3 text-sm leading-relaxed text-text-secondary md:text-base">
@@ -44,14 +44,6 @@ export default function Experience(): React.ReactElement {
                     </li>
                   ))}
                 </ul>
-              ) : (
-                <p className="mt-4 flex items-center gap-2.5 font-mono text-xs tracking-wider text-text-muted uppercase">
-                  <span className="relative flex h-2 w-2 shrink-0">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold opacity-60" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-gold" />
-                  </span>
-                  Just started · more soon
-                </p>
               )}
 
               {exp.techStack.length > 0 && (
