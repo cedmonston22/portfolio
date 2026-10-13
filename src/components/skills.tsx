@@ -34,7 +34,7 @@ export default function Skills(): React.ReactElement {
           hidden: {},
           visible: { transition: { staggerChildren: 0.1 } },
         }}
-        className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
+        className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
       >
         {skillCategories.map((category) => (
           <motion.div

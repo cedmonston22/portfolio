@@ -5,24 +5,27 @@ import {
   SiJavascript,
   SiOpenjdk,
   SiSharp,
+  SiC,
+  SiPytorch,
+  SiOpencv,
+  SiUltralytics,
   SiReact,
   SiNextdotjs,
   SiNodedotjs,
   SiFastapi,
   SiExpo,
   SiTailwindcss,
-  SiVite,
+  SiPandas,
+  SiGit,
+  SiGithubactions,
   SiDocker,
+  SiRos,
   SiGooglecloud,
-  SiRedis,
-  SiElasticsearch,
-  SiPostgresql,
-  SiPrisma,
   SiFirebase,
   SiSupabase,
-  SiGit,
+  SiPostgresql,
 } from "react-icons/si";
-import { TbLambda, TbExchange } from "react-icons/tb";
+import { TbSql, TbDrone, TbCube3dSphere, TbBrandAws } from "react-icons/tb";
 import { SiPlaywright } from "./icons";
 
 export interface Skill {
@@ -44,11 +47,16 @@ export const skillCategories: SkillCategory[] = [
       { name: "JavaScript", icon: SiJavascript },
       { name: "Java", icon: SiOpenjdk },
       { name: "C#", icon: SiSharp },
+      { name: "C", icon: SiC },
+      { name: "SQL", icon: TbSql },
     ],
   },
   {
-    name: "Frameworks",
+    name: "Frameworks & Libraries",
     skills: [
+      { name: "PyTorch", icon: SiPytorch },
+      { name: "OpenCV", icon: SiOpencv },
+      { name: "Ultralytics YOLO", icon: SiUltralytics },
       { name: "React", icon: SiReact },
       { name: "React Native", icon: SiReact },
       { name: "Next.js", icon: SiNextdotjs },
@@ -56,32 +64,24 @@ export const skillCategories: SkillCategory[] = [
       { name: "FastAPI", icon: SiFastapi },
       { name: "Expo", icon: SiExpo },
       { name: "Tailwind CSS", icon: SiTailwindcss },
-      { name: "Vite", icon: SiVite },
-    ],
-  },
-  {
-    name: "Infrastructure & Tools",
-    skills: [
-      // No AWS brand marks in react-icons: TbLambda is the λ glyph AWS Lambda
-      // itself uses; TbExchange stands in for Amazon MQ's message brokering.
-      { name: "AWS Lambda", icon: TbLambda },
-      { name: "Amazon MQ", icon: TbExchange },
       { name: "Playwright", icon: SiPlaywright },
-      { name: "Docker", icon: SiDocker },
-      { name: "Google Cloud Run", icon: SiGooglecloud },
-      { name: "Git", icon: SiGit },
+      { name: "Pandas", icon: SiPandas },
     ],
   },
   {
-    name: "Data",
+    name: "Tools & Platforms",
     skills: [
-      // Neon is managed Postgres, so the Postgres mark is the honest stand-in.
-      { name: "Neon", icon: SiPostgresql },
-      { name: "Prisma", icon: SiPrisma },
-      { name: "Redis", icon: SiRedis },
-      { name: "Elasticsearch", icon: SiElasticsearch },
+      { name: "Git", icon: SiGit },
+      { name: "GitHub Actions", icon: SiGithubactions },
+      { name: "Docker", icon: SiDocker },
+      { name: "ROS 2", icon: SiRos },
+      { name: "PX4", icon: TbDrone },
+      { name: "Gazebo", icon: TbCube3dSphere },
+      { name: "AWS", icon: TbBrandAws },
+      { name: "Google Cloud", icon: SiGooglecloud },
       { name: "Firebase", icon: SiFirebase },
       { name: "Supabase", icon: SiSupabase },
+      { name: "PostgreSQL", icon: SiPostgresql },
     ],
   },
 ];
