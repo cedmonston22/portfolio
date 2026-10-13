@@ -25,6 +25,7 @@ export const projects: Project[] = [
     ],
     techStack: ["Python", "PyTorch", "YOLO11", "OpenCV"],
     githubUrl: "https://github.com/cedmonston22/catan-board-visualizer",
+    liveUrl: "https://huggingface.co/spaces/cedmonst22/Catan-Board-Visualizer",
   },
   {
     slug: "vision-guided-uav",

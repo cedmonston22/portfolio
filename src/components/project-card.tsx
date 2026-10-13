@@ -107,7 +107,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps): React
             {project.liveUrl && (
               <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
                 {ExternalIcon}
-                Website
+                Live demo
               </a>
             )}
             {project.appUrl && (
