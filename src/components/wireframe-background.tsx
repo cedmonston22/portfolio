@@ -50,26 +50,55 @@ export default function WireframeBackground(): React.ReactElement {
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const mouse = { x: -9999, y: -9999 };
+    const base = document.createElement("canvas");
+    const baseCtx = base.getContext("2d");
     let triangles: Triangle[] = [];
     let width = 0;
     let height = 0;
     let frame = 0;
 
+    const tracePath = (target: CanvasRenderingContext2D, tri: Triangle): void => {
+      const [a, b, c] = tri.points;
+      target.moveTo(a[0], a[1]);
+      target.lineTo(b[0], b[1]);
+      target.lineTo(c[0], c[1]);
+      target.closePath();
+    };
+
+    const drawBase = (dpr: number): void => {
+      if (!baseCtx) return;
+      base.width = width * dpr;
+      base.height = height * dpr;
+      baseCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      baseCtx.lineWidth = 1;
+      baseCtx.strokeStyle = `rgba(${ACCENT_RGB}, ${BASE_ALPHA})`;
+      baseCtx.beginPath();
+      for (const tri of triangles) tracePath(baseCtx, tri);
+      baseCtx.stroke();
+    };
+
     const draw = (time: number): void => {
-      ctx.clearRect(0, 0, width, height);
+      if (!base.width || !base.height) return;
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(base, 0, 0);
+      const dpr = canvas.width / width;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.lineWidth = 1;
       for (const tri of triangles) {
-        const near = Math.max(0, 1 - Math.hypot(tri.cx - mouse.x, tri.cy - mouse.y) / HOVER_RADIUS);
-        const pulse = reducedMotion
-          ? 0
-          : Math.max(0, Math.sin(tri.cx / 70 + tri.cy / 85 - time / 1100)) ** 8 * PULSE_ALPHA;
-        const [a, b, c] = tri.points;
+        const dx = tri.cx - mouse.x;
+        const dy = tri.cy - mouse.y;
+        const near =
+          Math.abs(dx) < HOVER_RADIUS && Math.abs(dy) < HOVER_RADIUS
+            ? Math.max(0, 1 - Math.hypot(dx, dy) / HOVER_RADIUS)
+            : 0;
+        const wave = reducedMotion ? 0 : Math.sin(tri.cx / 70 + tri.cy / 85 - time / 1100);
+        const pulse = wave > 0.6 ? wave ** 8 * PULSE_ALPHA : 0;
+        const extra = near * HOVER_ALPHA + pulse;
+        if (extra < 0.004) continue;
         ctx.beginPath();
-        ctx.moveTo(a[0], a[1]);
-        ctx.lineTo(b[0], b[1]);
-        ctx.lineTo(c[0], c[1]);
-        ctx.closePath();
-        ctx.strokeStyle = `rgba(${ACCENT_RGB}, ${BASE_ALPHA + near * HOVER_ALPHA + pulse})`;
+        tracePath(ctx, tri);
+        ctx.strokeStyle = `rgba(${ACCENT_RGB}, ${extra})`;
         ctx.stroke();
         if (near > 0.3) {
           ctx.fillStyle = `rgba(${ACCENT_RGB}, ${near * 0.08})`;
@@ -98,8 +127,8 @@ export default function WireframeBackground(): React.ReactElement {
       height = window.innerHeight;
       canvas.width = width * dpr;
       canvas.height = height * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       triangles = buildTriangles(width, height);
+      drawBase(dpr);
       draw(performance.now());
     };
 
