@@ -9,23 +9,14 @@ export default function Experience(): React.ReactElement {
   return (
     <section
       id="experience"
-      className="relative mx-auto max-w-6xl px-6 pt-8 pb-20 md:px-8 md:pb-28"
+      aria-labelledby="experience-heading"
+      className="relative mx-auto max-w-6xl px-6 pt-4 pb-20 md:px-8 md:pb-28"
     >
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.15 }}
-        transition={{ duration: 0.6 }}
-      >
-        <p className="font-mono text-xs tracking-[0.2em] text-gold uppercase">
-          Background
-        </p>
-        <h2 className="mt-2 text-3xl font-bold text-text-primary md:text-4xl">
-          Experience
-        </h2>
-      </motion.div>
+      <h2 id="experience-heading" className="sr-only">
+        Experience
+      </h2>
 
-      <div className="mt-10">
+      <div>
         {experience.map((exp) => (
           <motion.article
             key={`${exp.company}-${exp.period}`}
