@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import type * as ThreeTypes from "three";
-import { DRONE_INTRO_ATTR, DRONE_INTRO_SEEN_KEY } from "./drone-intro-gate";
+import { DRONE_INTRO_ATTR, DRONE_INTRO_SEEN_KEY, DRONE_INTRO_SKIP_ATTR } from "./drone-intro-gate";
 
 const MODEL_URL = "/drone.glb";
 const LOAD_TIMEOUT_MS = 4000;
@@ -72,7 +72,13 @@ type DroneIntroProps = {
 export default function DroneIntro({ cargoRef }: DroneIntroProps): null {
   useEffect(() => {
     const root = document.documentElement;
-    if (root.dataset[DRONE_INTRO_ATTR] !== "pending") return;
+    const debug = (message: string): void => {
+      if (process.env.NODE_ENV !== "production") console.info(`[drone intro] ${message}`);
+    };
+    if (root.dataset[DRONE_INTRO_ATTR] !== "pending") {
+      debug(`skipped: ${root.dataset[DRONE_INTRO_SKIP_ATTR] ?? "page was not loaded fresh on /"}`);
+      return;
+    }
 
     const cargo = cargoRef.current;
     let disposed = false;
@@ -92,9 +98,10 @@ export default function DroneIntro({ cargoRef }: DroneIntroProps): null {
       }
     };
 
-    const finish = (animate: boolean): void => {
+    const finish = (animate: boolean, reason = "finished"): void => {
       if (disposed) return;
       disposed = true;
+      debug(reason);
       cancelAnimationFrame(frame);
       window.removeEventListener("resize", onResize);
       window.removeEventListener("scroll", onScroll);
@@ -116,14 +123,14 @@ export default function DroneIntro({ cargoRef }: DroneIntroProps): null {
     const startWidth = window.innerWidth;
     const startHeight = window.innerHeight;
     const onResize = (): void => {
-      if (window.innerWidth !== startWidth || window.innerHeight !== startHeight) finish(true);
+      if (window.innerWidth !== startWidth || window.innerHeight !== startHeight) finish(true, "cancelled: window resized");
     };
     const onScroll = (): void => {
-      if (Math.abs(window.scrollY - startScrollY) > 2) finish(true);
+      if (Math.abs(window.scrollY - startScrollY) > 2) finish(true, "cancelled: page scrolled");
     };
 
     if (!cargo || !hasWebGL()) {
-      finish(true);
+      finish(true, cargo ? "cancelled: WebGL unavailable" : "cancelled: card not found");
       return;
     }
 
@@ -131,7 +138,7 @@ export default function DroneIntro({ cargoRef }: DroneIntroProps): null {
     const vh = window.innerHeight;
     const base = layoutRect(cargo);
     if (base.top < 0 || base.top + base.height > vh || base.height === 0) {
-      finish(false);
+      finish(false, `cancelled: card not fully on screen (top ${Math.round(base.top)}, bottom ${Math.round(base.top + base.height)}, window height ${vh})`);
       return;
     }
     const tetherPx = base.height * TETHER_RATIO;
@@ -143,7 +150,7 @@ export default function DroneIntro({ cargoRef }: DroneIntroProps): null {
     window.addEventListener("resize", onResize);
     window.addEventListener("scroll", onScroll, { passive: true });
 
-    const loadTimer = window.setTimeout(() => finish(true), LOAD_TIMEOUT_MS);
+    const loadTimer = window.setTimeout(() => finish(true, `cancelled: model took over ${LOAD_TIMEOUT_MS}ms to load`), LOAD_TIMEOUT_MS);
 
     void (async () => {
       try {
@@ -160,7 +167,7 @@ export default function DroneIntro({ cargoRef }: DroneIntroProps): null {
       } catch (error) {
         console.error("Drone intro failed to load", error);
         window.clearTimeout(loadTimer);
-        finish(true);
+        finish(true, "cancelled: failed to load");
       }
     })();
 
@@ -418,7 +425,7 @@ export default function DroneIntro({ cargoRef }: DroneIntroProps): null {
     return () => {
       window.clearTimeout(loadTimer);
       if (canvas || disposed || process.env.NODE_ENV === "production") {
-        finish(false);
+        finish(false, "stopped: left the page");
         return;
       }
       disposed = true;
