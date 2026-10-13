@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 const PHOTOS = [
@@ -138,8 +139,8 @@ export default function ProfileCard(): React.ReactElement {
             id="contact"
             className="mt-5 flex flex-wrap items-center gap-3 scroll-mt-24"
           >
-            <a
-              href="#projects"
+            <Link
+              href="/projects"
               className="btn-primary inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold"
             >
               View projects
@@ -150,12 +151,10 @@ export default function ProfileCard(): React.ReactElement {
                   d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3"
                 />
               </svg>
-            </a>
+            </Link>
 
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/resume"
               className="btn-secondary inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold"
             >
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
@@ -166,7 +165,7 @@ export default function ProfileCard(): React.ReactElement {
                 />
               </svg>
               Resume
-            </a>
+            </Link>
 
             <div className="flex items-center gap-1.5">
               {socialLinks.map((link) => (

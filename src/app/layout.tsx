@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Outfit, Space_Mono } from "next/font/google";
 import "./globals.css";
 import WireframeBackground from "@/components/wireframe-background";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -17,7 +19,10 @@ const spaceMono = Space_Mono({
 const siteUrl = "https://www.coleedmonston.me";
 
 export const metadata: Metadata = {
-  title: "Cole Edmonston | Software Engineer",
+  title: {
+    default: "Cole Edmonston | Software Engineer",
+    template: "%s | Cole Edmonston",
+  },
   description:
     "Computer Science student at Cal Poly SLO working across the stack: React, React Native, Python, AWS. Creator of Mustang Market (900+ users) and ENVISION Wardrobe.",
   metadataBase: new URL(siteUrl),
@@ -74,7 +79,9 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        {children}
+        <Navbar />
+        <main id="main" className="min-h-dvh">{children}</main>
+        <Footer />
         <div className="grain-overlay" aria-hidden="true" />
       </body>
     </html>

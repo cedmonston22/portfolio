@@ -7,7 +7,7 @@ export default function Experience(): React.ReactElement {
   return (
     <section
       id="experience"
-      className="relative mx-auto max-w-6xl px-6 py-20 md:px-8 md:py-32"
+      className="relative mx-auto max-w-6xl px-6 pt-28 pb-20 md:px-8 md:pt-36 md:pb-32"
     >
       {/* Section divider */}
       <div className="absolute top-0 left-1/2 h-[1px] w-3/4 -translate-x-1/2 bg-gradient-to-r from-transparent via-border-subtle to-transparent" />
@@ -21,9 +21,9 @@ export default function Experience(): React.ReactElement {
         <p className="font-mono text-xs tracking-[0.2em] text-gold uppercase">
           Background
         </p>
-        <h2 className="mt-2 text-3xl font-bold text-text-primary md:text-4xl">
+        <h1 className="mt-2 text-3xl font-bold text-text-primary md:text-4xl">
           Education &amp; Experience
-        </h2>
+        </h1>
       </motion.div>
 
       <div className="mt-12 grid grid-cols-1 gap-16 md:grid-cols-2">

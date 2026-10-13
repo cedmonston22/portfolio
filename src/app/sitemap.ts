@@ -2,11 +2,11 @@ import type { MetadataRoute } from "next";
 
 const siteUrl = "https://www.coleedmonston.me";
 
+const routes = ["", "/experience", "/projects", "/resume"];
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: siteUrl,
-      lastModified: new Date(),
-    },
-  ];
+  return routes.map((route) => ({
+    url: `${siteUrl}${route}`,
+    lastModified: new Date(),
+  }));
 }

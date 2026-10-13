@@ -8,7 +8,7 @@ export default function Projects(): React.ReactElement {
   return (
     <section
       id="projects"
-      className="relative mx-auto max-w-6xl px-6 py-20 md:px-8 md:py-32"
+      className="relative mx-auto max-w-6xl px-6 pt-28 pb-20 md:px-8 md:pt-36 md:pb-32"
     >
       {/* Section divider */}
       <div className="absolute top-0 left-1/2 h-[1px] w-3/4 -translate-x-1/2 bg-gradient-to-r from-transparent via-border-subtle to-transparent" />
@@ -22,9 +22,9 @@ export default function Projects(): React.ReactElement {
         <p className="font-mono text-xs tracking-[0.2em] text-gold uppercase">
           Portfolio
         </p>
-        <h2 className="mt-2 text-3xl font-bold text-text-primary md:text-4xl">
+        <h1 className="mt-2 text-3xl font-bold text-text-primary md:text-4xl">
           Featured Projects
-        </h2>
+        </h1>
         <p className="mt-3 max-w-lg text-text-secondary">
           A selection of things I&apos;ve built, and the engineering behind
           them.

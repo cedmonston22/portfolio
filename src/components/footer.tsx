@@ -72,7 +72,7 @@ export default function Footer(): React.ReactElement {
 
           {/* Back to top */}
           <a
-            href="#hero"
+            href="#main"
             className="group flex items-center gap-1 font-mono text-[10px] tracking-wider text-text-muted uppercase transition-colors hover:text-gold"
           >
             Back to top

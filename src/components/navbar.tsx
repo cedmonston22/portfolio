@@ -1,19 +1,27 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { label: "Home", href: "#hero" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Experience", href: "#experience" },
-  { label: "Resume", href: "/resume.pdf", isExternal: true },
+  { label: "Home", href: "/" },
+  { label: "Experience", href: "/experience" },
+  { label: "Projects", href: "/projects" },
+  { label: "Resume", href: "/resume" },
 ];
 
 export default function Navbar(): React.ReactElement {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [menuPath, setMenuPath] = useState(pathname);
+
+  if (pathname !== menuPath) {
+    setMenuPath(pathname);
+    setIsOpen(false);
+  }
 
   useEffect(() => {
     const handleScroll = (): void => {
@@ -22,6 +30,9 @@ export default function Navbar(): React.ReactElement {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const isActive = (href: string): boolean =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <motion.nav
@@ -36,24 +47,25 @@ export default function Navbar(): React.ReactElement {
       }`}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-end px-6 py-5 md:px-8">
-        {/* Desktop links */}
         <ul className="hidden gap-8 md:flex">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                {...(link.isExternal
-                  ? { target: "_blank", rel: "noopener noreferrer" }
-                  : {})}
-                className="relative font-mono text-xs tracking-wider text-text-muted uppercase transition-colors hover:text-gold after:absolute after:bottom-[-4px] after:left-0 after:h-[1px] after:w-0 after:bg-gold after:transition-all after:duration-300 hover:after:w-full"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
+          {navLinks.map((link) => {
+            const active = isActive(link.href);
+            return (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  aria-current={active ? "page" : undefined}
+                  className={`relative font-mono text-xs tracking-wider uppercase transition-colors hover:text-gold after:absolute after:bottom-[-4px] after:left-0 after:h-[1px] after:bg-gold after:transition-all after:duration-300 hover:after:w-full ${
+                    active ? "text-gold after:w-full" : "text-text-muted after:w-0"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
-        {/* Mobile hamburger */}
         <button
           type="button"
           aria-expanded={isOpen}
@@ -74,7 +86,6 @@ export default function Navbar(): React.ReactElement {
         </button>
       </div>
 
-      {/* Mobile menu overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -86,25 +97,28 @@ export default function Navbar(): React.ReactElement {
             className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-bg-primary/95 backdrop-blur-xl md:hidden"
           >
             <ul className="flex flex-col items-center gap-8">
-              {navLinks.map((link, i) => (
-                <motion.li
-                  key={link.href}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 + i * 0.1, duration: 0.4 }}
-                >
-                  <a
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    {...(link.isExternal
-                      ? { target: "_blank", rel: "noopener noreferrer" }
-                      : {})}
-                    className="font-mono text-lg tracking-widest text-text-primary uppercase transition-colors hover:text-gold"
+              {navLinks.map((link, i) => {
+                const active = isActive(link.href);
+                return (
+                  <motion.li
+                    key={link.href}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 + i * 0.1, duration: 0.4 }}
                   >
-                    {link.label}
-                  </a>
-                </motion.li>
-              ))}
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      aria-current={active ? "page" : undefined}
+                      className={`font-mono text-lg tracking-widest uppercase transition-colors hover:text-gold ${
+                        active ? "text-gold" : "text-text-primary"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.li>
+                );
+              })}
             </ul>
           </motion.div>
         )}
