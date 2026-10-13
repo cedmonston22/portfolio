@@ -48,6 +48,26 @@ export default function Footer(): React.ReactElement {
             <p className="font-mono text-[10px] tracking-wider text-text-muted uppercase">
               &copy; {new Date().getFullYear()} Cole Edmonston
             </p>
+            <p className="font-mono text-[10px] tracking-wider text-text-muted/70">
+              Drone model by{" "}
+              <a
+                href="https://poly.pizza/m/DNbUoMtG3H"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 transition-colors hover:text-gold"
+              >
+                NateGazzard
+              </a>{" "}
+              via Poly Pizza,{" "}
+              <a
+                href="https://creativecommons.org/licenses/by/3.0/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 transition-colors hover:text-gold"
+              >
+                CC BY 3.0
+              </a>
+            </p>
           </div>
 
           {/* Social links */}
