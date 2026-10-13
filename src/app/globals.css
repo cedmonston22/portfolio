@@ -72,6 +72,55 @@ body {
   }
 }
 
+.facet {
+  --facet-cut: 18px;
+  --facet-offset: 8px;
+  position: relative;
+  transition: transform 0.25s ease;
+}
+
+.facet-clip {
+  clip-path: polygon(
+    var(--facet-cut) 0,
+    100% 0,
+    100% calc(100% - var(--facet-cut)),
+    calc(100% - var(--facet-cut)) 100%,
+    0 100%,
+    0 var(--facet-cut)
+  );
+}
+
+.facet-back {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-gold);
+  transform: translate(var(--facet-offset), var(--facet-offset));
+  transition: transform 0.25s ease;
+}
+
+.facet-front {
+  position: relative;
+  height: 100%;
+  background-color: var(--color-bg-elevated);
+}
+
+.facet-interactive:hover,
+.facet-interactive:focus-within {
+  transform: translate(-4px, -4px);
+}
+
+.facet-interactive:hover .facet-back,
+.facet-interactive:focus-within .facet-back {
+  transform: translate(calc(var(--facet-offset) + 4px), calc(var(--facet-offset) + 4px));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .facet,
+  .facet-back {
+    transition: none;
+  }
+}
+
 /* Film grain overlay — fixed, non-interactive, site-wide texture */
 .grain-overlay {
   position: fixed;
