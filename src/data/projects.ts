@@ -13,21 +13,6 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: "mustang-market",
-    title: "Mustang Market",
-    description:
-      "A buy-and-sell marketplace made just for Cal Poly students. You sign in with your school account, so everyone you're trading with is a verified classmate rather than an anonymous stranger. It runs on the web and on iPhone, and more than 1,000 students have signed up.",
-    meta: ["1,000+ users", "iOS App Store", "Co-Founder & Full Stack Developer", "Mar 2026 — Present"],
-    highlights: [
-      "Launched a Cal Poly student marketplace, growing to 1,000+ users (400+ app downloads) via campus events and campaigns",
-      "Engineered a listing pipeline integrating image uploads, Groq Vision auto-tagging, and input validation across 100+ listings",
-      "Integrated Azure AD SSO with Cal Poly's identity provider to authenticate and gate the marketplace to verified students",
-    ],
-    techStack: ["TypeScript", "React", "Next.js", "Expo", "Firebase"],
-    liveUrl: "https://www.mustang-market.com/login",
-    appUrl: "https://apps.apple.com/us/app/mustang-market/id6759310029",
-  },
-  {
     slug: "catan-board-visualizer",
     title: "Catan Board Visualizer",
     description:
