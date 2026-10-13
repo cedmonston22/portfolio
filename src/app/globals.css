@@ -1,30 +1,24 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Background tones (cream / light) */
-  --color-bg-primary: #f2ebd9;
-  --color-bg-elevated: #fcf8ee;
-  --color-bg-surface: #fffdf7;
-  --color-bg-hover: #ebe3cf;
+  --color-bg-primary: #0c0b09;
+  --color-bg-elevated: #17150f;
+  --color-bg-surface: #1d1a13;
+  --color-bg-hover: #26221a;
 
-  /* Text (espresso brown) */
-  --color-text-primary: #241c14;
-  --color-text-secondary: #4a3f34;
-  --color-text-muted: #756656;
+  --color-text-primary: #f3eee3;
+  --color-text-secondary: #c2baa9;
+  --color-text-muted: #8a8272;
 
-  /* Grey scale — only these two are live (scrollbar thumb + its hover) */
-  --color-grey-600: #a89a86;
-  --color-grey-700: #8a7c68;
+  --color-grey-600: #5c5547;
+  --color-grey-700: #3d382e;
 
-  /* Accent (café au lait) — ramp runs light → dark to match the light theme.
-     `gold` is the default accent and is the only one safe for small text. */
-  --color-gold-light: #a67b5b;
-  --color-gold: #8a6244;
-  --color-gold-dark: #6b4a33;
+  --color-gold-light: #efcb72;
+  --color-gold: #e0b44c;
+  --color-gold-dark: #b38a2c;
 
-  /* Borders — espresso alpha rather than neutral black, so edges stay warm */
-  --color-border-subtle: rgba(36, 28, 20, 0.12);
-  --color-border-hover: rgba(36, 28, 20, 0.22);
+  --color-border-subtle: rgba(243, 238, 227, 0.1);
+  --color-border-hover: rgba(224, 180, 76, 0.35);
 
   /* Fonts */
   --font-sans: var(--font-outfit);
@@ -57,7 +51,7 @@ body {
 /* Resting elevation — every card sits on the page, not in it */
 .surface-card,
 .card-hover {
-  box-shadow: 0 1px 2px rgba(36, 28, 20, 0.04), 0 4px 12px rgba(36, 28, 20, 0.05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.35);
 }
 
 /* Card lift — resting elevation plus hover, for cards that are actually targets */
@@ -68,7 +62,7 @@ body {
 .card-hover:hover {
   border-color: var(--color-border-hover);
   background-color: var(--color-bg-surface);
-  box-shadow: 0 8px 28px rgba(36, 28, 20, 0.12), 0 0 0 1px rgba(36, 28, 20, 0.04);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(224, 180, 76, 0.08);
   transform: translateY(-2px);
 }
 
@@ -99,7 +93,7 @@ body {
   transition: background-color 180ms ease;
 }
 .btn-primary:hover {
-  background-color: #3a2d23;
+  background-color: var(--color-gold-light);
 }
 
 /* Secondary button — outlined, matching the social icon buttons */
