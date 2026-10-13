@@ -9,8 +9,10 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "Experience", href: "/#experience" },
   { label: "Projects", href: "/projects" },
-  { label: "Resume", href: "/resume" },
+  { label: "Resume", href: "/resume.pdf", isExternal: true },
 ];
+
+const externalProps = { target: "_blank", rel: "noopener noreferrer" };
 
 export default function Navbar(): React.ReactElement {
   const pathname = usePathname();
@@ -78,6 +80,7 @@ export default function Navbar(): React.ReactElement {
               <li key={link.href}>
                 <Link
                   href={link.href}
+                  {...(link.isExternal ? externalProps : {})}
                   aria-current={active ? "page" : undefined}
                   className={`relative font-mono text-xs tracking-wider uppercase transition-colors hover:text-gold after:absolute after:bottom-[-4px] after:left-0 after:h-[1px] after:bg-gold after:transition-all after:duration-300 hover:after:w-full ${
                     active ? "text-gold after:w-full" : "text-text-muted after:w-0"
@@ -132,6 +135,7 @@ export default function Navbar(): React.ReactElement {
                   >
                     <Link
                       href={link.href}
+                      {...(link.isExternal ? externalProps : {})}
                       onClick={() => setIsOpen(false)}
                       aria-current={active ? "page" : undefined}
                       className={`font-mono text-lg tracking-widest uppercase transition-colors hover:text-gold ${
