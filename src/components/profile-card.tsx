@@ -46,7 +46,7 @@ export default function ProfileCard(): React.ReactElement {
       id="hero"
       className="relative mx-auto max-w-6xl px-6 pt-28 pb-12 md:px-8 md:pt-36"
     >
-      <div className="grid items-center gap-12 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] md:gap-16">
+      <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_23rem] lg:gap-16">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -114,7 +114,7 @@ export default function ProfileCard(): React.ReactElement {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1, ease }}
-          className="flex justify-center md:justify-end"
+          className="flex justify-center lg:justify-end"
         >
           <InfoCard />
         </motion.div>

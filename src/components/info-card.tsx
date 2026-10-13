@@ -19,8 +19,8 @@ export default function InfoCard(): React.ReactElement {
   const [active, setActive] = useState(0);
 
   return (
-    <FacetCard className="w-full max-w-[18rem]" contentClassName="p-3.5">
-      <div className="facet-clip relative aspect-[3/4] w-full overflow-hidden bg-bg-hover [--facet-cut:14px]">
+    <FacetCard className="w-full max-w-[23rem]" contentClassName="p-4">
+      <div className="facet-clip relative aspect-[5/6] w-full overflow-hidden bg-bg-hover [--facet-cut:14px]">
         {PHOTOS.map((photo, i) => (
           <Image
             key={photo.src}
@@ -29,7 +29,7 @@ export default function InfoCard(): React.ReactElement {
             fill
             loading={i === 0 ? "eager" : "lazy"}
             fetchPriority={i === 0 ? "high" : "auto"}
-            sizes="260px"
+            sizes="(max-width: 420px) 90vw, 336px"
             className={`${photo.fit} transition-opacity duration-500 ease-in-out ${
               active === i ? "opacity-100" : "opacity-0"
             }`}
