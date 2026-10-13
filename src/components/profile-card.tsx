@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import InfoCard from "./info-card";
@@ -57,11 +56,7 @@ export default function ProfileCard(): React.ReactElement {
           transition={{ duration: 0.7, ease }}
           className="min-w-0 lg:self-center"
         >
-          <p className="font-mono text-xs tracking-[0.2em] text-gold uppercase">
-            Computer Science · Cal Poly SLO · Class of 2029
-          </p>
-
-          <h1 className="mt-4 text-6xl leading-[0.92] font-extrabold tracking-tight text-text-primary sm:text-7xl lg:text-8xl">
+          <h1 className="text-6xl leading-[0.92] font-extrabold tracking-tight text-text-primary sm:text-7xl lg:text-8xl">
             Cole
             <br />
             Edmonston
@@ -79,8 +74,10 @@ export default function ProfileCard(): React.ReactElement {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Link
-              href="/resume"
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-primary inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold"
             >
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
@@ -91,7 +88,7 @@ export default function ProfileCard(): React.ReactElement {
                 />
               </svg>
               Resume
-            </Link>
+            </a>
 
             <div className="flex items-center gap-1.5">
               {socialLinks.map((link) => (
