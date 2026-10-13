@@ -84,9 +84,11 @@ export default function ProjectRow({
           {project.meta.join(" · ")}
         </p>
 
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-text-secondary">
-          {project.description}
-        </p>
+        {project.description && (
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-text-secondary">
+            {project.description}
+          </p>
+        )}
 
         <ul className="mt-5 space-y-2.5">
           {project.highlights.map((highlight) => (

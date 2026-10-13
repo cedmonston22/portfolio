@@ -1,14 +1,10 @@
 export interface Project {
   slug: string;
   title: string;
-  /** Plain-language summary of what the project is — no jargon, no implementation. */
-  description: string;
-  /** Short verifiable facts rendered as a single meta line under the title. */
+  description?: string;
   meta: string[];
-  /** Exactly three technical highlights — what I personally built. */
   highlights: [string, string, string];
   techStack: string[];
-  /** Optional: a row renders full-width until its screenshot exists. */
   image?: string;
   githubUrl?: string;
   liveUrl?: string;
@@ -18,50 +14,42 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: "mustang-market",
-    title: "Mustang Market",
+    slug: "catan-board-visualizer",
+    title: "Catan Board Visualizer",
     description:
-      "A buy-and-sell marketplace made just for Cal Poly students. You sign in with your school account, so everyone you're trading with is a verified classmate rather than an anonymous stranger. It runs on the web and on iPhone, and around 900 students have signed up.",
-    meta: ["900+ users", "iOS App Store", "Product Manager & Team Lead", "Jan 2026 — Current"],
+      "Take one photo of a physical Settlers of Catan board and get back a clean digital version of it, plus every player's visible score.",
+    meta: [],
     highlights: [
-      "Wired up Cal Poly SSO through Microsoft Azure AD so account creation is restricted to verified calpoly.edu identities",
-      "Built a Groq-backed moderation step into listing creation that flags and blocks unwanted images and descriptions before a listing goes live",
-      "Wrote the image pipeline on the Firebase SDK — HEIC/HEIF to JPG conversion, compression, and Cloud Storage upload — so iPhone photos stop failing client-side",
+      "Built a CV referee using YOLO11 and homography to read and regenerate a Catan board from one photo and score players",
+      "Labeled 3,100+ pieces and trained 5 YOLO11 models; cut false detections 43% by targeting lighting where the model failed",
+      "Raised number-token accuracy from 80% to 100% by catching the model reading terrain, not digits, and masking it out",
     ],
-    techStack: ["Next.js", "TypeScript", "Firebase", "Azure AD", "Groq AI"],
-    image: "/projects/mustang-market.png",
-    liveUrl: "https://www.mustang-market.com/login",
-    appUrl: "https://apps.apple.com/us/app/mustang-market/id6759310029",
+    techStack: ["Python", "PyTorch", "YOLO11", "OpenCV"],
+    githubUrl: "https://github.com/cedmonston22/catan-board-visualizer",
   },
   {
-    slug: "llm-evaluation-pipeline",
-    title: "LLM Evaluation Pipeline",
-    description:
-      "A system for figuring out which AI model actually answers a question best. It sends the same prompts to several models at once, keeps every response searchable, and lets people read the answers side by side and rate them.",
-    // TODO: role + timeline still needed — not stated on the resume.
-    meta: ["3 models benchmarked", "Event-driven on AWS Lambda"],
+    slug: "vision-guided-uav",
+    title: "Vision Guided UAV (Simulation)",
+    meta: [],
     highlights: [
-      "Built an event-driven benchmarking pipeline on AWS Lambda and Amazon MQ, using Python asyncio to evaluate three models concurrently",
-      "Designed the search and caching layer over Elasticsearch and Redis, supporting real-time aggregates and targeted cache invalidation",
-      "Built an RLHF-style annotation UI in Next.js that persists human ratings to Redis and Elasticsearch for model benchmarking",
+      "Built a vision-guided autonomy stack in PX4 SITL and Gazebo; closed-loop visual position hold in progress",
+      "Developed real-time ArUco detection on a ROS 2 camera feed at 1.4–3.1 ms per 1280x960 frame, 99% detection at 9.4 m",
+      "Traced a 4x camera frame-rate drop to UDP fragmentation; tuned kernel socket buffers to lift it from 6 to 24 Hz",
     ],
-    techStack: ["Python", "AWS Lambda", "Amazon MQ", "Elasticsearch", "Redis", "Next.js"],
+    techStack: ["Python", "PX4", "ROS 2", "Gazebo", "OpenCV", "MAVSDK"],
   },
   {
-    slug: "vora",
-    title: "Vora",
+    slug: "pii-cypher",
+    title: "PII Cypher",
     description:
-      "A Chrome extension that lets you use the web entirely by voice, built in 13 hours at Kiro Hacks for people who can't use a mouse or keyboard. Say what you want in plain English and it finds the right thing on the page and does it, reading back anything risky before it acts.",
-    meta: ["Kiro Hacks", "3-person team", "Voice activation & talk-back UI", "May 2026"],
+      "Batch-scrubs identifiers out of Schedule K-1s and puts them back on demand.",
+    meta: [],
     highlights: [
-      "Built a wake-word gate that survives Web Speech mishearings, using phonetic aliases, fuzzy matching, and a per-user buffer of learned mispronunciations",
-      "Wrote the transcript pipeline that merges interim and final speech results into one utterance, flushing on a short silence so natural pauses don't cut a request off",
-      "Used Claude to turn each transcript plus a snapshot of the page's interactive elements into a single typed browser action, with spoken confirmation before destructive ones",
+      "Built a reversible PII tokenizer for tax PDFs, encrypting values under per-job AES-256-GCM keys, restorable on demand",
+      "Benchmarked against 54 synthetic docs with 536 labeled identifiers across 6 PII types: 100% precision, 99% recall",
+      "Verified redactions by comparing rasterized pages pixel by pixel at 150 DPI, catching failures text extraction misses",
     ],
-    techStack: ["Chrome Extension", "React", "TypeScript", "Web Speech API", "Claude API"],
-    image: "/projects/vora.png",
-    githubUrl: "https://github.com/cedmonston22/vora",
-    devpostUrl: "https://devpost.com/software/vora-soh32i",
+    techStack: ["Python", "FastAPI", "PyMuPDF", "pdfplumber"],
   },
   {
     slug: "envision-wardrobe",
@@ -70,11 +58,11 @@ export const projects: Project[] = [
       "An iOS app that turns your closet into a digital wardrobe and picks outfits for you. Take a photo of a piece of clothing and it fills in the details on its own — no typing anything in. Went from an idea to 90+ TestFlight testers in under two months.",
     meta: ["90+ TestFlight users", "Solo developer", "Nov 2025 — Jan 2026"],
     highlights: [
-      "Wrote the outfit engine that scores candidate combinations on color harmony, pattern compatibility, clothing fit, and current weather",
-      "Integrated Groq Llama 4 Vision to auto-detect an item's type, colors, patterns, brand, and name from a single photo",
-      "Self-hosted background removal on Google Cloud Run with rembg and Docker, eliminating per-image API costs entirely",
+      "Built an outfit engine scoring color harmony, pattern, clothing-fit, and weather, for 90+ TestFlight users",
+      "Integrated Groq Vision API to detect clothing type, colors, patterns, brands, and upload items to a user's wardrobe from a photo",
+      "Self-hosted background removal on Google Cloud using rembg and Docker, eliminating API costs",
     ],
-    techStack: ["React Native", "Expo", "Firebase", "Groq AI", "Cloud Run", "Docker"],
+    techStack: ["React Native", "Google Cloud", "Docker", "Expo"],
     image: "/projects/envision.png",
     appUrl: "https://testflight.apple.com/join/gv57D16y",
   },
