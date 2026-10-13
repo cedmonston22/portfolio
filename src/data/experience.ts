@@ -10,7 +10,7 @@ export interface Experience {
 
 export const experience: Experience[] = [
   {
-    company: "Cal Poly DxHub",
+    company: "Cal Poly AWS Digital Transformation Hub",
     role: "Software Engineering Intern",
     location: "San Luis Obispo, CA",
     period: "Oct 2026 — Present",
