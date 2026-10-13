@@ -44,9 +44,9 @@ export default function ProfileCard(): React.ReactElement {
   return (
     <section
       id="hero"
-      className="relative mx-auto max-w-6xl px-6 pt-28 pb-12 md:px-8 md:pt-36"
+      className="relative mx-auto max-w-6xl px-6 pt-28 pb-12 md:px-8"
     >
-      <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_23rem] lg:gap-16">
+      <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_23rem] lg:items-start lg:gap-16">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}

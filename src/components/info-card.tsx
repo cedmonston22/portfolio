@@ -20,7 +20,7 @@ export default function InfoCard(): React.ReactElement {
 
   return (
     <FacetCard className="w-full max-w-[23rem]" contentClassName="p-4">
-      <div className="facet-clip relative aspect-[5/6] w-full overflow-hidden bg-bg-hover [--facet-cut:14px]">
+      <div className="facet-clip relative aspect-[5/6] w-full overflow-hidden bg-bg-hover [--facet-cut:14px] lg:aspect-auto lg:h-[clamp(260px,calc(100dvh-20rem),403px)]">
         {PHOTOS.map((photo, i) => (
           <Image
             key={photo.src}
