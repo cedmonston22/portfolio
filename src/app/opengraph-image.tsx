@@ -9,6 +9,8 @@ export const size = {
 };
 export const contentType = "image/png";
 
+const GOLD = "#e0b44c";
+
 export default async function Image(): Promise<ImageResponse> {
   const headshot = await readFile(join(process.cwd(), "public/headshot.jpg"));
   const headshotSrc = `data:image/jpeg;base64,${headshot.toString("base64")}`;
@@ -20,40 +22,44 @@ export default async function Image(): Promise<ImageResponse> {
           display: "flex",
           width: "100%",
           height: "100%",
-          background: "#f2ebd9",
+          background: "#0c0b09",
           alignItems: "center",
-          gap: 64,
+          gap: 72,
           padding: 80,
           fontFamily: "sans-serif",
         }}
       >
-        {/* Headshot — plain <img> is required inside next/og (no next/image) */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={headshotSrc}
-          alt="Cole Edmonston"
-          width={372}
-          height={466}
-          style={{
-            width: 372,
-            height: 466,
-            objectFit: "cover",
-            objectPosition: "top",
-            borderRadius: 28,
-            border: "1px solid rgba(0,0,0,0.08)",
-          }}
-        />
-
-        {/* Text */}
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <div style={{ display: "flex", position: "relative", width: 372, height: 466 }}>
           <div
             style={{
-              fontSize: 24,
-              letterSpacing: 6,
-              fontWeight: 600,
-              color: "#8a6244",
+              position: "absolute",
+              top: 14,
+              left: 14,
+              width: 372,
+              height: 466,
+              background: GOLD,
             }}
-          >
+          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={headshotSrc}
+            alt="Cole Edmonston"
+            width={372}
+            height={466}
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: 372,
+              height: 466,
+              objectFit: "cover",
+              objectPosition: "top",
+            }}
+          />
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ fontSize: 24, letterSpacing: 6, fontWeight: 600, color: GOLD }}>
             COMPUTER SCIENCE · CAL POLY SLO
           </div>
           <div
@@ -61,30 +67,18 @@ export default async function Image(): Promise<ImageResponse> {
               display: "flex",
               flexDirection: "column",
               marginTop: 18,
-              fontSize: 88,
-              fontWeight: 700,
-              color: "#241c14",
-              lineHeight: 1,
+              fontSize: 92,
+              fontWeight: 800,
+              color: "#f3eee3",
+              lineHeight: 0.95,
             }}
           >
             <span>Cole</span>
             <span>Edmonston</span>
           </div>
-          <div
-            style={{
-              width: 104,
-              height: 5,
-              background: "#8a6244",
-              borderRadius: 3,
-              margin: "32px 0",
-            }}
-          />
-          <div style={{ fontSize: 32, color: "#5c5044" }}>
-            Software Engineer · Builder
-          </div>
-          <div style={{ fontSize: 22, color: "#8a7d6c", marginTop: 22 }}>
-            coleedmonston.me
-          </div>
+          <div style={{ width: 104, height: 5, background: GOLD, margin: "32px 0" }} />
+          <div style={{ fontSize: 32, color: "#c2baa9" }}>Software Engineer · Builder</div>
+          <div style={{ fontSize: 22, color: "#8a8272", marginTop: 22 }}>coleedmonston.me</div>
         </div>
       </div>
     ),
