@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 const siteUrl = "https://www.coleedmonston.me";
 
-const routes = ["", "/experience", "/projects", "/resume"];
+const routes = ["", "/projects", "/resume"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({

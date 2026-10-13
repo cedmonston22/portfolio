@@ -69,6 +69,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${outfit.variable} ${spaceMono.variable} antialiased`}
     >
       <body>

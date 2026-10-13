@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Experience", href: "/experience" },
+  { label: "Experience", href: "/#experience" },
   { label: "Projects", href: "/projects" },
   { label: "Resume", href: "/resume" },
 ];
@@ -17,6 +17,7 @@ export default function Navbar(): React.ReactElement {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuPath, setMenuPath] = useState(pathname);
+  const [isInExperience, setIsInExperience] = useState(false);
 
   if (pathname !== menuPath) {
     setMenuPath(pathname);
@@ -31,8 +32,31 @@ export default function Navbar(): React.ReactElement {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isActive = (href: string): boolean =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
+  useEffect(() => {
+    if (pathname !== "/") return;
+    const targets = ["experience", "skills"]
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+    const visible = new Set<Element>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) visible.add(entry.target);
+          else visible.delete(entry.target);
+        }
+        setIsInExperience(visible.size > 0);
+      },
+      { rootMargin: "-40% 0px -55% 0px" },
+    );
+    targets.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  const isActive = (href: string): boolean => {
+    if (href === "/") return pathname === "/" && !isInExperience;
+    if (href === "/#experience") return pathname === "/" && isInExperience;
+    return pathname.startsWith(href);
+  };
 
   return (
     <motion.nav
