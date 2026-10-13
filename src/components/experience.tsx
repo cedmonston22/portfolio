@@ -35,25 +35,37 @@ export default function Experience(): React.ReactElement {
               <h3 className="text-2xl font-bold text-text-primary md:text-3xl">{exp.company}</h3>
               <p className="mt-1 text-sm font-medium text-gold">{exp.role}</p>
 
-              <ul className="mt-4 space-y-2">
-                {exp.bullets.map((bullet) => (
-                  <li key={bullet} className="flex gap-3 text-sm leading-relaxed text-text-secondary md:text-base">
-                    <span aria-hidden="true" className="mt-2.5 h-1 w-1 shrink-0 bg-gold" />
-                    {bullet}
-                  </li>
-                ))}
-              </ul>
+              {exp.bullets.length > 0 ? (
+                <ul className="mt-4 space-y-2">
+                  {exp.bullets.map((bullet) => (
+                    <li key={bullet} className="flex gap-3 text-sm leading-relaxed text-text-secondary md:text-base">
+                      <span aria-hidden="true" className="mt-2.5 h-1 w-1 shrink-0 bg-gold" />
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="mt-4 flex items-center gap-2.5 font-mono text-xs tracking-wider text-text-muted uppercase">
+                  <span className="relative flex h-2 w-2 shrink-0">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold opacity-60" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-gold" />
+                  </span>
+                  Just started · more soon
+                </p>
+              )}
 
-              <ul aria-label="Tech stack" className="mt-5 flex flex-wrap gap-2">
-                {exp.techStack.map((tech) => (
-                  <li
-                    key={tech}
-                    className="border border-border-subtle px-2.5 py-1 font-mono text-[11px] text-text-secondary lowercase"
-                  >
-                    {tech}
-                  </li>
-                ))}
-              </ul>
+              {exp.techStack.length > 0 && (
+                <ul aria-label="Tech stack" className="mt-5 flex flex-wrap gap-2">
+                  {exp.techStack.map((tech) => (
+                    <li
+                      key={tech}
+                      className="border border-border-subtle px-2.5 py-1 font-mono text-[11px] text-text-secondary lowercase"
+                    >
+                      {tech}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           </motion.article>
         ))}
