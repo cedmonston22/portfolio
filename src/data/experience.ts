@@ -1,61 +1,35 @@
-export interface Education {
-  school: string;
-  degree: string;
-  location: string;
-  year: string;
-  highlights: string[];
-}
-
 export interface Experience {
   company: string;
   role: string;
   location: string;
   period: string;
+  techStack: string[];
   bullets: string[];
 }
 
-export const education: Education[] = [
+export const experience: Experience[] = [
   {
-    school: "California Polytechnic State University",
-    degree: "B.S. Computer Science",
+    company: "Mustang Market",
+    role: "Co-Founder & Full Stack Developer",
     location: "San Luis Obispo, CA",
-    year: "2029",
-    highlights: ["3.82 GPA", "President's List (2025–2026)"],
-  },
-  {
-    school: "Clayton Valley Charter High School",
-    degree: "",
-    location: "Clayton, CA",
-    year: "2025",
-    highlights: [
-      "AP Scholar with Honors",
-      "Scholastic Athlete Award (4 Years)",
-      "NCS 2nd Team All-League (Baseball)",
+    period: "Mar 2026 — Present",
+    techStack: ["TypeScript", "React", "Next.js", "Expo", "Firebase"],
+    bullets: [
+      "Launched a Cal Poly student marketplace, growing to 1,000+ users (400+ app downloads) via campus events and campaigns",
+      "Engineered a listing pipeline integrating image uploads, Groq Vision auto-tagging, and input validation across 100+ listings",
+      "Integrated Azure AD SSO with Cal Poly's identity provider to authenticate and gate the marketplace to verified students",
     ],
   },
-];
-
-export const experience: Experience[] = [
   {
     company: "Spread Goodness",
     role: "Software Engineering Intern",
     location: "Remote · Santa Barbara, CA",
-    period: "May 2026 — Present",
+    period: "May 2026 — Sep 2026",
+    techStack: ["JavaScript", "React", "Playwright", "Docker", "Firebase"],
     bullets: [
-      "Built regression test suites for critical user flows using Docker containers and the Firebase emulator.",
-      "Designed and implemented seed data generation to simulate realistic user states, enabling consistent, repeatable test runs.",
-      "Wrote test scripts with Playwright, integrated with GitHub Actions to run automated regression checks on every change.",
-    ],
-  },
-  {
-    company: "Math Tutor",
-    role: "Self-Employed",
-    location: "Hybrid · Clayton, CA",
-    period: "Nov 2023 — Apr 2024",
-    bullets: [
-      "Helped students improve grades through structured one-on-one sessions in Algebra 1 and Algebra 2.",
-      "Tracked student grades on a graph to give them a visual representation of their growth.",
-      "Adapted teaching approach to individual learning styles, delivering sessions both remotely and in-person.",
+      "Built Playwright regression suites for two critical user flows, automatically validating pull requests from 20+ developers",
+      "Designed seed data generation to simulate realistic user states, enabling consistent, repeatable test runs",
+      "Developed reusable authentication fixtures for six permission levels, eliminating redundant logins across Playwright test runs",
     ],
   },
 ];
