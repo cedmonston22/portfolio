@@ -4,6 +4,7 @@ import "./globals.css";
 import WireframeBackground from "@/components/wireframe-background";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import { DRONE_INTRO_GATE } from "@/components/drone-intro-gate";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -71,8 +72,10 @@ export default function RootLayout({
       lang="en"
       data-scroll-behavior="smooth"
       className={`${outfit.variable} ${spaceMono.variable} antialiased`}
+      suppressHydrationWarning
     >
       <body>
+        <script dangerouslySetInnerHTML={{ __html: DRONE_INTRO_GATE }} />
         <WireframeBackground />
         <a
           href="#main"

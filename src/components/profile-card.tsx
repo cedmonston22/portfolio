@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useRef } from "react";
 import InfoCard from "./info-card";
+import DroneIntro from "./drone-intro";
 
 const socialLinks = [
   {
@@ -41,6 +43,8 @@ const socialLinks = [
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function ProfileCard(): React.ReactElement {
+  const cargoRef = useRef<HTMLDivElement>(null);
+
   return (
     <section
       id="hero"
@@ -116,9 +120,12 @@ export default function ProfileCard(): React.ReactElement {
           transition={{ duration: 0.7, delay: 0.1, ease }}
           className="flex justify-center lg:justify-end"
         >
-          <InfoCard />
+          <div ref={cargoRef} className="drone-cargo w-full max-w-[23rem]">
+            <InfoCard />
+          </div>
         </motion.div>
       </div>
+      <DroneIntro cargoRef={cargoRef} />
     </section>
   );
 }

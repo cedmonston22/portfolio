@@ -121,6 +121,10 @@ body {
   }
 }
 
+html[data-drone-intro="pending"] .drone-cargo {
+  transform: translate3d(0, 120vh, 0);
+}
+
 /* Film grain overlay — fixed, non-interactive, site-wide texture */
 .grain-overlay {
   position: fixed;
