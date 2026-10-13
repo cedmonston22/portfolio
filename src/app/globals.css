@@ -42,34 +42,9 @@ body {
 }
 
 
-@media (prefers-reduced-motion: reduce) {
-  .animate-ping {
-    animation: none;
-  }
-}
-
 /* Resting elevation — every card sits on the page, not in it */
-.surface-card,
-.card-hover {
+.surface-card {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.35);
-}
-
-/* Card lift — resting elevation plus hover, for cards that are actually targets */
-.card-hover {
-  transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.card-hover:hover {
-  border-color: var(--color-border-hover);
-  background-color: var(--color-bg-surface);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(224, 180, 76, 0.08);
-  transform: translateY(-2px);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .card-hover:hover {
-    transform: none;
-  }
 }
 
 .facet {
