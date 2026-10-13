@@ -2,27 +2,23 @@
 
 import { motion } from "framer-motion";
 import { projects } from "@/data/projects";
-import ProjectRow from "./project-row";
+import ProjectCard from "./project-card";
 
 export default function Projects(): React.ReactElement {
   return (
     <section
       id="projects"
-      className="relative mx-auto max-w-6xl px-6 pt-28 pb-20 md:px-8 md:pt-36 md:pb-32"
+      className="relative mx-auto max-w-6xl overflow-x-clip px-6 pt-28 pb-20 md:px-8 md:pt-36 md:pb-32"
     >
-      {/* Section divider */}
-      <div className="absolute top-0 left-1/2 h-[1px] w-3/4 -translate-x-1/2 bg-gradient-to-r from-transparent via-border-subtle to-transparent" />
-
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.15 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
         <p className="font-mono text-xs tracking-[0.2em] text-gold uppercase">
           Portfolio
         </p>
-        <h1 className="mt-2 text-3xl font-bold text-text-primary md:text-4xl">
+        <h1 className="mt-2 text-4xl font-bold text-text-primary md:text-5xl">
           Featured Projects
         </h1>
         <p className="mt-3 max-w-lg text-text-secondary">
@@ -31,20 +27,11 @@ export default function Projects(): React.ReactElement {
         </p>
       </motion.div>
 
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.05 }}
-        variants={{
-          hidden: {},
-          visible: { transition: { staggerChildren: 0.12 } },
-        }}
-        className="mt-12 space-y-12 md:space-y-16"
-      >
+      <div className="mt-14 space-y-14 md:space-y-20">
         {projects.map((project, i) => (
-          <ProjectRow key={project.slug} project={project} priority={i === 0} />
+          <ProjectCard key={project.slug} project={project} index={i} />
         ))}
-      </motion.div>
+      </div>
     </section>
   );
 }
