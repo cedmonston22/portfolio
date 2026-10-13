@@ -66,6 +66,7 @@ export const projects: Project[] = [
       "Verified redactions by comparing rasterized pages pixel by pixel at 150 DPI, catching failures text extraction misses",
     ],
     techStack: ["Python", "FastAPI", "PyMuPDF", "pdfplumber"],
+    githubUrl: "https://github.com/cedmonston22/pii-cypher",
   },
   {
     slug: "envision-wardrobe",
