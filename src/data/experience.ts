@@ -5,6 +5,7 @@ export interface Experience {
   period: string;
   techStack: string[];
   bullets: string[];
+  links?: { label: string; href: string }[];
 }
 
 export const experience: Experience[] = [
@@ -26,6 +27,10 @@ export const experience: Experience[] = [
       "Launched a Cal Poly student marketplace, growing to 1,000+ users (400+ app downloads) via campus events and campaigns",
       "Engineered a listing pipeline integrating image uploads, Groq Vision auto-tagging, and input validation across 100+ listings",
       "Integrated Azure AD SSO with Cal Poly's identity provider to authenticate and gate the marketplace to verified students",
+    ],
+    links: [
+      { label: "Website", href: "https://www.mustang-market.com/login" },
+      { label: "App Store", href: "https://apps.apple.com/us/app/mustang-market/id6759310029" },
     ],
   },
   {

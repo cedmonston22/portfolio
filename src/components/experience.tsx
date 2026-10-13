@@ -33,7 +33,20 @@ export default function Experience(): React.ReactElement {
 
             <div>
               <h3 className="text-2xl font-bold text-text-primary md:text-3xl">{exp.company}</h3>
-              <p className="mt-1 text-sm font-medium text-gold">{exp.role}</p>
+              <div className="mt-1 flex flex-wrap items-baseline gap-x-4 gap-y-1">
+                <p className="text-sm font-medium text-gold">{exp.role}</p>
+                {exp.links?.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-text-muted underline decoration-border-hover underline-offset-4 transition-colors hover:text-gold hover:decoration-gold"
+                  >
+                    {link.label} ↗
+                  </a>
+                ))}
+              </div>
 
               {exp.bullets.length > 0 && (
                 <ul className="mt-4 space-y-2">
