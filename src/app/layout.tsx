@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit, Space_Mono } from "next/font/google";
 import "./globals.css";
+import WireframeBackground from "@/components/wireframe-background";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -66,6 +67,7 @@ export default function RootLayout({
       className={`${outfit.variable} ${spaceMono.variable} antialiased`}
     >
       <body>
+        <WireframeBackground />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded focus:bg-gold focus:px-4 focus:py-2 focus:text-bg-primary focus:font-semibold"
