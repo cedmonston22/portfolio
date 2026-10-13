@@ -55,7 +55,7 @@ export default function ProfileCard(): React.ReactElement {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease }}
-          className="min-w-0"
+          className="min-w-0 lg:self-center"
         >
           <p className="font-mono text-xs tracking-[0.2em] text-gold uppercase">
             Computer Science · Cal Poly SLO · Class of 2029
@@ -68,18 +68,14 @@ export default function ProfileCard(): React.ReactElement {
           </h1>
 
           <p className="mt-6 max-w-xl text-base leading-relaxed text-text-secondary">
-            Before I was an engineer, I was an athlete. Thirteen years of
-            baseball, competitive enough to earn NCAA D3 offers. I didn&rsquo;t
-            play in college, but the years on the field shaped how I work.
+            I care about software that solves a real problem for real people,
+            the kind they&rsquo;d notice if it disappeared tomorrow.
           </p>
 
           <p className="mt-4 max-w-xl text-base leading-relaxed text-text-secondary">
-            A love for video games turned into curiosity about how things get
-            built, and then into a drive to make products people actually use.
-            Since then I&rsquo;ve worked across the stack, from the interface
-            people touch to the systems running behind it. I&rsquo;m looking for
-            internship opportunities where I can keep building, keep learning,
-            and contribute to a team.
+            Outside of code, I&rsquo;ve played baseball most of my life, and
+            these days you&rsquo;ll find me at the gym, playing Spikeball, or
+            losing at Catan.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
