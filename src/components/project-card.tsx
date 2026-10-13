@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { SiDevpost } from "react-icons/si";
 import type { Project } from "@/data/projects";
@@ -49,103 +48,86 @@ export default function ProjectCard({ project, index }: ProjectCardProps): React
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
-      className={`w-full lg:w-[88%] ${isRight ? "lg:ml-auto" : ""}`}
+      className={`w-full lg:w-[80%] ${isRight ? "lg:ml-auto" : ""}`}
     >
       <FacetCard
         isInteractive
         className="[--facet-cut:26px] [--facet-offset:10px]"
         contentClassName="p-6 md:p-9"
       >
-        <div
-          className={
-            project.image
-              ? "grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] md:gap-10"
-              : ""
-          }
-        >
-          {project.image && (
-            <div
-              className={`facet-clip relative aspect-[16/10] overflow-hidden bg-bg-hover [--facet-cut:16px] ${
-                isRight ? "md:order-last" : ""
-              }`}
+        <div className="min-w-0 max-w-3xl">
+          <p className="font-mono text-xs tracking-[0.2em] text-gold">
+            {String(index + 1).padStart(2, "0")}
+          </p>
+          <h2 className="mt-2 text-3xl font-bold tracking-tight text-text-primary md:text-4xl">
+            {project.title}
+          </h2>
+
+          {project.meta.length > 0 && (
+            <ul
+              aria-label="Details"
+              className="mt-2 flex flex-wrap gap-x-2 font-mono text-[11px] tracking-[0.14em] text-text-muted uppercase"
             >
-              <Image
-                src={project.image}
-                alt={`${project.title} screenshot`}
-                fill
-                loading={index === 0 ? "eager" : "lazy"}
-                sizes="(max-width: 768px) 90vw, 440px"
-                className="object-cover"
-              />
-            </div>
+              {project.meta.map((item, i) => (
+                <li key={item} className="whitespace-nowrap">
+                  {i > 0 && <span aria-hidden="true" className="mr-2">·</span>}
+                  {item}
+                </li>
+              ))}
+            </ul>
           )}
 
-          <div className="min-w-0">
-            <p className="font-mono text-xs tracking-[0.2em] text-gold">
-              {String(index + 1).padStart(2, "0")}
+          {project.description && (
+            <p className="mt-4 text-base leading-relaxed text-text-secondary">
+              {project.description}
             </p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight text-text-primary md:text-4xl">
-              {project.title}
-            </h2>
+          )}
 
-            {project.meta.length > 0 && (
-              <p className="mt-2 font-mono text-[11px] tracking-[0.14em] text-text-muted uppercase">
-                {project.meta.join(" · ")}
-              </p>
+          <ul className="mt-5 space-y-2.5">
+            {project.highlights.map((highlight) => (
+              <li key={highlight} className="flex gap-3 text-sm leading-relaxed text-text-secondary">
+                <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 bg-gold" />
+                {highlight}
+              </li>
+            ))}
+          </ul>
+
+          <ul aria-label="Tech stack" className="mt-5 flex flex-wrap gap-2">
+            {project.techStack.map((tech) => (
+              <li
+                key={tech}
+                className="border border-border-subtle px-2.5 py-1 font-mono text-[11px] text-text-secondary lowercase"
+              >
+                {tech}
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-6 flex flex-wrap gap-2">
+            {project.liveUrl && (
+              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                {ExternalIcon}
+                Website
+              </a>
             )}
-
-            {project.description && (
-              <p className="mt-4 text-base leading-relaxed text-text-secondary">
-                {project.description}
-              </p>
+            {project.appUrl && (
+              <a href={project.appUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                {AppIcon}
+                {project.appUrl.includes("testflight") ? "TestFlight" : "App Store"}
+              </a>
             )}
-
-            <ul className="mt-5 space-y-2.5">
-              {project.highlights.map((highlight) => (
-                <li key={highlight} className="flex gap-3 text-sm leading-relaxed text-text-secondary">
-                  <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 bg-gold" />
-                  {highlight}
-                </li>
-              ))}
-            </ul>
-
-            <ul aria-label="Tech stack" className="mt-5 flex flex-wrap gap-2">
-              {project.techStack.map((tech) => (
-                <li
-                  key={tech}
-                  className="border border-border-subtle px-2.5 py-1 font-mono text-[11px] text-text-secondary lowercase"
-                >
-                  {tech}
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-6 flex flex-wrap gap-2">
-              {project.liveUrl && (
-                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
-                  {ExternalIcon}
-                  Website
-                </a>
-              )}
-              {project.appUrl && (
-                <a href={project.appUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
-                  {AppIcon}
-                  {project.appUrl.includes("testflight") ? "TestFlight" : "App Store"}
-                </a>
-              )}
-              {project.githubUrl && (
-                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
-                  {GitHubIcon}
-                  GitHub
-                </a>
-              )}
-              {project.devpostUrl && (
-                <a href={project.devpostUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
-                  <SiDevpost className="h-3.5 w-3.5" />
-                  Devpost
-                </a>
-              )}
-            </div>
+            {project.githubUrl && (
+              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                {GitHubIcon}
+                GitHub
+              </a>
+            )}
+            {project.devpostUrl && (
+              <a href={project.devpostUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                <SiDevpost className="h-3.5 w-3.5" />
+                Devpost
+              </a>
+            )}
           </div>
         </div>
       </FacetCard>

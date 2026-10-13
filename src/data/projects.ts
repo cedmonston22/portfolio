@@ -5,7 +5,6 @@ export interface Project {
   meta: string[];
   highlights: [string, string, string];
   techStack: string[];
-  image?: string;
   githubUrl?: string;
   liveUrl?: string;
   appUrl?: string;
@@ -25,7 +24,6 @@ export const projects: Project[] = [
       "Integrated Azure AD SSO with Cal Poly's identity provider to authenticate and gate the marketplace to verified students",
     ],
     techStack: ["TypeScript", "React", "Next.js", "Expo", "Firebase"],
-    image: "/projects/mustang-market.png",
     liveUrl: "https://www.mustang-market.com/login",
     appUrl: "https://apps.apple.com/us/app/mustang-market/id6759310029",
   },
@@ -46,6 +44,7 @@ export const projects: Project[] = [
   {
     slug: "vision-guided-uav",
     title: "Vision Guided UAV (Simulation)",
+    description: "Uses camera vision to automatically direct a drone over a moving marker.",
     meta: [],
     highlights: [
       "Built a vision-guided autonomy stack in PX4 SITL and Gazebo; closed-loop visual position hold in progress",
@@ -53,6 +52,7 @@ export const projects: Project[] = [
       "Traced a 4x camera frame-rate drop to UDP fragmentation; tuned kernel socket buffers to lift it from 6 to 24 Hz",
     ],
     techStack: ["Python", "PX4", "ROS 2", "Gazebo", "OpenCV", "MAVSDK"],
+    githubUrl: "https://github.com/cedmonston22/vision-guided-uav",
   },
   {
     slug: "pii-cypher",
@@ -72,15 +72,14 @@ export const projects: Project[] = [
     slug: "envision-wardrobe",
     title: "ENVISION Wardrobe",
     description:
-      "An iOS app that turns your closet into a digital wardrobe and picks outfits for you. Take a photo of a piece of clothing and it fills in the details on its own — no typing anything in. Went from an idea to 90+ TestFlight testers in under two months.",
-    meta: ["90+ TestFlight users", "Solo developer", "Nov 2025 — Jan 2026"],
+      "An iOS app that turns your closet into a digital wardrobe and picks outfits for you.",
+    meta: ["90+ TestFlight users", "Nov 2025 — Jan 2026"],
     highlights: [
       "Built an outfit engine scoring color harmony, pattern, clothing-fit, and weather, for 90+ TestFlight users",
       "Integrated Groq Vision API to detect clothing type, colors, patterns, brands, and upload items to a user's wardrobe from a photo",
       "Self-hosted background removal on Google Cloud using rembg and Docker, eliminating API costs",
     ],
     techStack: ["React Native", "Google Cloud", "Docker", "Expo"],
-    image: "/projects/envision.png",
     appUrl: "https://testflight.apple.com/join/gv57D16y",
   },
 ];
