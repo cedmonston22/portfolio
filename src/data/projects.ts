@@ -73,7 +73,7 @@ export const projects: Project[] = [
     title: "ENVISION Wardrobe",
     description:
       "An iOS app that turns your closet into a digital wardrobe and picks outfits for you.",
-    meta: ["90+ TestFlight users", "Nov 2025 — Jan 2026"],
+    meta: [],
     highlights: [
       "Built an outfit engine scoring color harmony, pattern, clothing-fit, and weather, for 90+ TestFlight users",
       "Integrated Groq Vision API to detect clothing type, colors, patterns, brands, and upload items to a user's wardrobe from a photo",
