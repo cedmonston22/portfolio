@@ -1,14 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-
-const PHOTOS = [
-  { src: "/headshot.jpg", alt: "Cole Edmonston", fit: "object-cover object-top" },
-  { src: "/baseball-action.jpg", alt: "Cole Edmonston playing baseball", fit: "object-cover object-center" },
-];
+import InfoCard from "./info-card";
+import QuickLinks from "./quick-links";
 
 const socialLinks = [
   {
@@ -44,73 +39,32 @@ const socialLinks = [
   },
 ];
 
-export default function ProfileCard(): React.ReactElement {
-  const [active, setActive] = useState(0);
+const ease = [0.22, 1, 0.36, 1] as const;
 
+export default function ProfileCard(): React.ReactElement {
   return (
     <section
       id="hero"
-      className="relative flex min-h-dvh items-center justify-center px-6 py-16 md:py-32"
+      className="relative mx-auto flex min-h-dvh max-w-6xl flex-col justify-center gap-14 px-6 pt-28 pb-16 md:px-8"
     >
-      <div className="flex w-full max-w-5xl flex-col items-center gap-8 md:flex-row md:gap-14">
-        {/* Photo — headshot by default; dots switch to the action shot */}
+      <div className="grid items-center gap-12 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] md:gap-16">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="relative aspect-[4/5] w-full max-w-[200px] shrink-0 overflow-hidden rounded-2xl border border-border-subtle bg-bg-hover shadow-[0_8px_40px_rgba(0,0,0,0.12)] sm:max-w-[260px] md:w-[340px] md:max-w-[340px]"
-        >
-          {PHOTOS.map((photo, i) => (
-            <Image
-              key={photo.src}
-              src={photo.src}
-              alt={photo.alt}
-              fill
-              priority={i === 0}
-              sizes="(max-width: 640px) 200px, (max-width: 768px) 260px, 340px"
-              className={`${photo.fit} transition-opacity duration-500 ease-in-out ${
-                active === i ? "opacity-100" : "opacity-0"
-              }`}
-            />
-          ))}
-
-          {/* Dots — tap to switch the active photo (padded for a larger touch target) */}
-          <div className="absolute bottom-1 left-1/2 z-10 flex -translate-x-1/2">
-            {PHOTOS.map((photo, i) => (
-              <button
-                key={photo.src}
-                type="button"
-                aria-label={`Show ${photo.alt}`}
-                aria-current={active === i}
-                onClick={() => setActive(i)}
-                className="group flex items-center justify-center p-2.5"
-              >
-                <span
-                  className={`h-2.5 w-2.5 rounded-full shadow-[0_1px_3px_rgba(0,0,0,0.5)] transition-colors ${
-                    active === i ? "bg-white" : "bg-white/50 group-hover:bg-white/80"
-                  }`}
-                />
-              </button>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Text */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="w-full min-w-0 md:flex-1"
+          transition={{ duration: 0.7, ease }}
+          className="min-w-0"
         >
           <p className="font-mono text-xs tracking-[0.2em] text-gold uppercase">
             Computer Science · Cal Poly SLO · Class of 2029
           </p>
 
-          <h1 className="mt-3 text-5xl font-bold leading-[1.05] tracking-tight text-text-primary sm:text-6xl">
-            Cole Edmonston
+          <h1 className="mt-4 text-6xl leading-[0.92] font-extrabold tracking-tight text-text-primary sm:text-7xl lg:text-8xl">
+            Cole
+            <br />
+            Edmonston
           </h1>
 
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-text-secondary">
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-text-secondary">
             Before I was an engineer, I was an athlete. Thirteen years of
             baseball, competitive enough to earn NCAA D3 offers. I didn&rsquo;t
             play in college, but the years on the field shaped how I work.
@@ -125,37 +79,10 @@ export default function ProfileCard(): React.ReactElement {
             and contribute to a team.
           </p>
 
-          {/* Availability — the first thing a recruiter scans for */}
-          <p className="mt-8 flex items-center gap-2.5 font-mono text-xs tracking-wider text-text-muted uppercase">
-            <span className="relative flex h-2 w-2 shrink-0">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold opacity-60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-gold" />
-            </span>
-            Available for 2027 internships
-          </p>
-
-          {/* Actions */}
-          <div
-            id="contact"
-            className="mt-5 flex flex-wrap items-center gap-3 scroll-mt-24"
-          >
-            <Link
-              href="/projects"
-              className="btn-primary inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold"
-            >
-              View projects
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3"
-                />
-              </svg>
-            </Link>
-
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
               href="/resume"
-              className="btn-secondary inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold"
+              className="btn-primary inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold"
             >
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
                 <path
@@ -183,7 +110,24 @@ export default function ProfileCard(): React.ReactElement {
             </div>
           </div>
         </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1, ease }}
+          className="flex justify-center md:justify-end"
+        >
+          <InfoCard />
+        </motion.div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.25, ease }}
+      >
+        <QuickLinks />
+      </motion.div>
     </section>
   );
 }
