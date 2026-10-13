@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import InfoCard from "./info-card";
-import QuickLinks from "./quick-links";
 
 const socialLinks = [
   {
@@ -45,7 +44,7 @@ export default function ProfileCard(): React.ReactElement {
   return (
     <section
       id="hero"
-      className="relative mx-auto flex min-h-dvh max-w-6xl flex-col justify-center gap-14 px-6 pt-28 pb-16 md:px-8"
+      className="relative mx-auto max-w-6xl px-6 pt-28 pb-12 md:px-8 md:pt-36"
     >
       <div className="grid items-center gap-12 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] md:gap-16">
         <motion.div
@@ -120,14 +119,6 @@ export default function ProfileCard(): React.ReactElement {
           <InfoCard />
         </motion.div>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.25, ease }}
-      >
-        <QuickLinks />
-      </motion.div>
     </section>
   );
 }
